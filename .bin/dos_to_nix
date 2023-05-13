@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Problem:
+#	dos's <CR> and unix's <LF>
+# 	# couldn't use ```vim plugins``` since they were downloaded in my windows system
+# Solution:
+# 	unixize the files // slow but does the work
+
+for file in $(find .); do
+	# skip directories 
+	if [ -d $file ]; then
+		continue
+	fi
+
+	# TODO:
+	# 	skip if it is in .git/ directory
+
+	git=`ls $file | grep ".git"`
+
+	if [ -z $git ]; then
+		echo "updating $file "
+		vim +':set fileformat=unix' +':write' $file +':quit'
+	else
+	    continue
+	fi
+
+done
