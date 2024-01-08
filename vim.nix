@@ -10,10 +10,10 @@ let
 in
 {
 	 programs.vim = {
-		package = older_nixpkg.vim; 
+    	package = older_nixpkg.vim; 
 		enable = true;
                 plugins = [
-                  pkgs.vimPlugins.Vundle-vim
+                  older_nixpkg.vimPlugins.Vundle-vim
                 ];
                 extraConfig = builtins.readFile ./.vimrc;
 	};
