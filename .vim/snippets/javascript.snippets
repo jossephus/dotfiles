@@ -1,0 +1,34 @@
+snippet jest
+
+	test('${1:desc}', () => {
+		expect(${2}).toBe(${3})
+	});
+
+snippet expect
+	expect(${1}).to${3:Be}(${4});
+
+snippet describe
+	describe('${1}', () => {
+		test('${2}', () => {
+		});
+	});
+
+snippet describe_long
+	describe('makePoniesPink', () => {
+		beforeAll(() => {
+			/* Runs before all tests */
+		})
+		afterAll(() => {
+			/* Runs after all tests */
+		})
+		beforeEach(() => {
+			/* Runs before each test */
+		})
+		afterEach(() => {
+			/* Runs after each test */
+		})
+		test('make each pony pink', () => {
+			const actual = fn(['Alice', 'Bob', 'Eve'])
+			expect(actual).toEqual(['Pink Alice', 'Pink Bob', 'Pink Eve'])
+		})
+	})
