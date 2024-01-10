@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 {
 	imports = [
-		./gnome.nix
-		./vim.nix
-        ./home/modules/zoxide.nix
+		./modules
 	];
 
 	nixpkgs.overlays = [
