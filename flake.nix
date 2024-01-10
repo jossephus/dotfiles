@@ -39,7 +39,7 @@
 					
 					    home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
-						home-manager.users.aldrich = import ./home.nix;
+						home-manager.users.aldrich = import ./home;
 					}
 				];
 			};
