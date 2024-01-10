@@ -24,7 +24,12 @@
         vim-nixpkgs-unstable.url = "github:nixos/nixpkgs/f597e7e9fcf37d8ed14a12835ede0a7d362314bd";
 	};
 
-	outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: {
+    outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: 
+    let 
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+      };
+    in {
 
 		nixosConfigurations = {
 			nixos-test = nixpkgs.lib.nixosSystem  {
@@ -45,5 +50,13 @@
 			};
 
 		};
+        homeConfigurations = {
+          aldrich = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [
+              ./home
+            ];
+          };
+        };
 	};
 }

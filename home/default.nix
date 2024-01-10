@@ -35,6 +35,7 @@
 		neofetch
 		eza
 
+        ripgrep
 	];
 	
 
@@ -43,6 +44,8 @@
 		enableCompletion = true;
 		shellAliases = {	
 			ll = "ls -laf";
+            os = "sudo nixos-rebuild switch --flake ~/.config/nixos-config#nixos-test";
+            hm = "home-manager switch --flake ~/.config/nixos-config/";
 		};
 	};
 
