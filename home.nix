@@ -3,6 +3,7 @@
 	imports = [
 		./gnome.nix
 		./vim.nix
+        ./zoxide.nix
 	];
 
 	nixpkgs.overlays = [

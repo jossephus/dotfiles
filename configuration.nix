@@ -53,6 +53,15 @@
   services.xserver = {
     layout = "us";
     xkbVariant = "";
+    
+    config = ''
+Section "InputClass"
+	Identifier "Touchscreen catchall"
+	MatchIsTouchscreen "on"
+   Option "Ignore" "on"
+Endsection
+'';
+
   };
 
   # Enable CUPS to print documents.

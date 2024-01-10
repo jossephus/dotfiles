@@ -20,6 +20,8 @@
 		helix.url = "github:helix-editor/helix";
 
 		nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+        vim-nixpkgs-unstable.url = "github:nixos/nixpkgs/f597e7e9fcf37d8ed14a12835ede0a7d362314bd";
 	};
 
 	outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: {
@@ -28,8 +30,6 @@
 			nixos-test = nixpkgs.lib.nixosSystem  {
 				system = "x86_64-linux";
 				specialArgs = inputs;
-
-
 	
 				modules = [
 					./configuration.nix
