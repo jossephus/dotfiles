@@ -5,4 +5,10 @@
     enableBashIntegration = true;
   };
 
-};
+  programs.bash = {
+    shellAliases = {
+      cd = "z";
+    };
+  };
+
+}
