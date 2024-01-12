@@ -64,6 +64,12 @@ Endsection
 
   };
 
+  # disable touchscreen
+  # based on https://askubuntu.com/questions/927022/how-can-i-disable-touchscreen-while-using-wayland
+  services.udev.extraRules = ''
+SUBSYSTEM=="usb", ATTRS{idVendor}=="04f3", ATTRS{idProduct}=="250e", ATTR{authorized}="0"
+'';
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -93,17 +99,18 @@ Endsection
     description = "aldrich";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-	firefox
-	steam
-	gnome.gnome-tweaks
-	transmission
-	#spotify
-	telegram-desktop
-	wezterm
-	alacritty
 
-	# lets try installing packages here
-    #  thunderbird
+      firefox
+      steam
+      gnome.gnome-tweaks
+      transmission
+      #spotify
+      telegram-desktop
+      wezterm
+      alacritty
+
+      # lets try installing packages here
+      #  thunderbird
     ];
   };
 
@@ -112,13 +119,23 @@ Endsection
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
    	# vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-   	wget
-	git
-	helix
-	rustup
-	gcc
+   	pkgs.wget
+	pkgs.git
+	pkgs.helix
+	pkgs.rustup
+	pkgs.gcc
+
+    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in 
+       pkgs.buildFHSUserEnv (base // {
+              name = "fhs";
+                   targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config]; 
+                        profile = "export FHS=1"; 
+                             runScript = "bash"; 
+                                  extraOutputsToInstall = ["dev"];
+                                     }))
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

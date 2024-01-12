@@ -8,5 +8,8 @@
                 extraConfig = builtins.readFile ./.vimrc;
 	};
         # home.file.".vimrc".source = ./.vimrc;
-    home.file.".vim".source = ./.vim;
+    home.file.".vim" = {
+      source = ./.vim;
+      recursive = true;
+    };
 }

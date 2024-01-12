@@ -12,6 +12,17 @@
 		})
 	];
 
+	home.packages = [
+		pkgs.btop
+		pkgs.neofetch
+		pkgs.eza
+        pkgs.tcl-8_5
+        pkgs.dpkg
+
+        pkgs.ripgrep
+        pkgs.just
+	];
+
 	home.username = "aldrich";
 	home.homeDirectory = "/home/aldrich";
 	
@@ -30,13 +41,6 @@
 	};
 
 
-	home.packages = with pkgs; [
-		btop
-		neofetch
-		eza
-
-        ripgrep
-	];
 	
 
 	programs.bash = {
@@ -61,4 +65,9 @@
 	home.stateVersion = "23.11";
 
 	programs.home-manager.enable = true;
+
+    home.sessionVariables = {
+      NIX_LD_LBRARY_PATH = with pkgs; lib.makeLibraryPath [
+      ];
+    };
 }
