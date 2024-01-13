@@ -110,7 +110,6 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="04f3", ATTRS{idProduct}=="250e", ATTR{author
       alacritty
 
       sublime4
-      vscode
 
       # lets try installing packages here
       #  thunderbird
@@ -119,6 +118,13 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="04f3", ATTRS{idProduct}=="250e", ATTR{author
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Allow insecure packages
+  nixpkgs.config.permittedInsecurePackages = [
+          # open ssl
+          "openssl-1.1.1w"
+                                  
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

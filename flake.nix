@@ -2,7 +2,7 @@
 	description = "My Nixos Configuration";
 
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11-small";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
 		# alacritty themes
 		alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
