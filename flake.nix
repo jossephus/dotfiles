@@ -8,7 +8,7 @@
 		alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
 		home-manager = {
-			url = "github:nix-community/home-manager/release-23.11";
+			url = "github:nix-community/home-manager";
 			# The `follows` keyword in inputs is used for inheritance.
 			# Here, `inputs.nixpkgs` of home-manager is kept consistent with
 			# the `inputs.nixpkgs` of the current flake,
