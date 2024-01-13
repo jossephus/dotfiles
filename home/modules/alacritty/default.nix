@@ -31,7 +31,7 @@
 			scrolling.multiplier = 5;
 			selection.save_to_clipboard = true;
 			window = {
-				decorations = "full";
+				decorations = "none";
 			};
 			import = [ ./rose-pine.yaml ];
 			# import = [ pkgs.alacritty-theme.cyber_punk_neon ];

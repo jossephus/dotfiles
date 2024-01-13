@@ -64,7 +64,7 @@ Plugin 'imsnif/kdl.vim'
 
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
-Plugin 'autozimu/LanguageClient-neovim'
+"Plugin 'autozimu/LanguageClient-neovim'
 "Plugin 'nerdtree'
 "Plugin 'vim-nerdtree-tabs'
 "Plugin 'undotree'

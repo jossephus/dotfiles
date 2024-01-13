@@ -12,16 +12,27 @@
 		})
 	];
 
-	home.packages = [
-		pkgs.btop
-		pkgs.neofetch
-		pkgs.eza
-        pkgs.tcl-8_5
-        pkgs.dpkg
+	home.packages = with pkgs; [
+		btop
+		neofetch
+		eza
+        tcl-8_5
+        dpkg
 
-        pkgs.ripgrep
-        pkgs.just
+        ripgrep
+        just
+
+        neofetch
+
+        nix-output-monitor
+
+        typst
+
+        rubik
 	];
+
+    fonts.fontconfig.enable = true;
+
 
 	home.username = "aldrich";
 	home.homeDirectory = "/home/aldrich";

@@ -109,6 +109,9 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="04f3", ATTRS{idProduct}=="250e", ATTR{author
       wezterm
       alacritty
 
+      sublime4
+      vscode
+
       # lets try installing packages here
       #  thunderbird
     ];
