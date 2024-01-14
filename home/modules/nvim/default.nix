@@ -4,7 +4,7 @@
       enable = true;
     };
 
-    xdg = {
+    programs.xdg = {
       enable = true;
       configFile = {
         "nvim" = {
