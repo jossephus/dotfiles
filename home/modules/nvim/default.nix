@@ -4,16 +4,26 @@
       enable = true;
     };
 
-    programs.xdg = {
-      enable = true;
-      configFile = {
-        "nvim" = {
-          source = ./config;
-          force = true;
-          recursive = true;
-        };
-      };
+    home.file.".config/nvim" = {
+      source = ./config;
+      recursive = true;
     };
+
+    #home.file.".vim" = {
+      #source = ./.vim;
+      #recursive = true;
+    #};
+
+    #xdg = {
+      #enable = true;
+      #configFile = {
+        #"nvim" = {
+          #source = ./config;
+          #force = true;
+          #recursive = true;
+        #};
+      #};
+    #};
 
         # home.file.".vimrc".source = ./.vimrc;
     #home.file.".config/nvim".source = ./config;
