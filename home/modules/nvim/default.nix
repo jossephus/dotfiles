@@ -8,6 +8,7 @@
       "nvim" = {
         source = ./config;
         force = true;
+        recursive = true;
       };
     };
         # home.file.".vimrc".source = ./.vimrc;
