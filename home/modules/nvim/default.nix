@@ -4,16 +4,11 @@
       enable = true;
     };
 
-    home.file."config" = {
-      source = builtins.path { path = "./config"; name = "config"; };
+
+    home.file.".nvim" = {
+      source = ./.nvim;
       recursive = true;
     };
-
-
-    #home.file.".vim" = {
-      #source = ./.vim;
-      #recursive = true;
-    #};
 
     #xdg = {
       #enable = true;
