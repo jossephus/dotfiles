@@ -5,8 +5,8 @@
     };
 
 
-    home.file.".nvim" = {
-      source = ./.nvim;
+    home.file.".config/nvim" = {
+      source = ./config;
       recursive = true;
     };
 
