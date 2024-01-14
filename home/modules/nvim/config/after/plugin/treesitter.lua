@@ -1,11 +1,11 @@
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.monkey = {
-  install_info = {
-    url = "/home/aldrich/workspace/rspace/src/utils/monkey/tree-sitter-monkey/",
-    files = {"src/parser.c"},
-  },
-  filetype = "mon",
-}
+--local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+--parser_config.monkey = {
+  --install_info = {
+    --url = "/home/aldrich/workspace/rspace/src/utils/monkey/tree-sitter-monkey/",
+    --files = {"src/parser.c"},
+  --},
+  --filetype = "mon",
+--}
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"

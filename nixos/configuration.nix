@@ -136,6 +136,12 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="04f3", ATTRS{idProduct}=="250e", ATTR{author
 	pkgs.rustup
 	pkgs.gcc
 
+  # for node version manager
+  pkgs.volta
+
+  # Golang
+  pkgs.go
+
     (let base = pkgs.appimageTools.defaultFhsEnvArgs; in 
        pkgs.buildFHSUserEnv (base // {
               name = "fhs";

@@ -13,10 +13,10 @@ augroup vue_auto_format
 augroup END
 ]])
 
-vim.lsp.start({
-  name = 'monkey-language-server',
-  cmd = { 'monkey-language-server' },
-})
+--vim.lsp.start({
+  --name = 'monkey-language-server',
+  --cmd = { 'monkey-language-server' },
+--})
 
 --use({
 --"mhartington/formatter.nvim",

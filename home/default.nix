@@ -22,6 +22,8 @@
         ripgrep
         just
 
+        nodejs
+
         neofetch
 
         nix-output-monitor

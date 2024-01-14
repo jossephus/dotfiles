@@ -11,3 +11,10 @@ activate-hm:
 
 list-gen:
     sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 2d
+
+
+nvim-clean:
+     rm -rvf ${HOME}/.config/nvim/
+nvim-test: nvim-clean
+     rsync -avz --copy-links --chmod=D2755,F744 /home/aldrich/.config/nixos-config/home/modules/nvim/config/ ${HOME}/.config/nvim/
+
