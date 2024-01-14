@@ -5,9 +5,10 @@
     };
 
     home.file."config" = {
-      source = ./config;
+      source = builtins.path { path = "./config"; name "config"; };
       recursive = true;
     };
+
 
     #home.file.".vim" = {
       #source = ./.vim;
