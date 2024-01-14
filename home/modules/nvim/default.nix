@@ -5,7 +5,7 @@
     };
 
     home.file."config" = {
-      source = builtins.path { path = "./config"; name "config"; };
+      source = builtins.path { path = "./config"; name = "config"; };
       recursive = true;
     };
 
