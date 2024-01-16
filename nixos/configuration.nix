@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/gnome.nix
     ];
 
   # Bootloader.
@@ -42,33 +43,6 @@
     LC_TIME = "am_ET";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-    
-    config = ''
-Section "InputClass"
-	Identifier "Touchscreen catchall"
-	MatchIsTouchscreen "on"
-   Option "Ignore" "on"
-Endsection
-'';
-
-  };
-
-  # disable touchscreen
-  # based on https://askubuntu.com/questions/927022/how-can-i-disable-touchscreen-while-using-wayland
-  services.udev.extraRules = ''
-SUBSYSTEM=="usb", ATTRS{idVendor}=="04f3", ATTRS{idProduct}=="250e", ATTR{authorized}="0"
-'';
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

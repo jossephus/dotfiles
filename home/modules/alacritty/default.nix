@@ -35,6 +35,10 @@
 			};
 			import = [ ./rose-pine.yaml ];
 			# import = [ pkgs.alacritty-theme.cyber_punk_neon ];
+
+            font.bold.family = "Fira Code Nerd Font";
+            font.italic.family = "Fira Code Nerd Font";
+            font.normal.family = "Fira Code Nerd Font";
 		};
 	};
 
