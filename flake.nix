@@ -14,6 +14,9 @@
 		# Helix Editor
 		helix.url = "github:helix-editor/helix";
 
+        # nix-colors
+        nix-colors.url = "github:misterio77/nix-colors";
+
 		nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
         vim-nixpkgs-unstable.url = "github:nixos/nixpkgs/f597e7e9fcf37d8ed14a12835ede0a7d362314bd";
@@ -29,14 +32,13 @@
 		nixosConfigurations = {
 			"aldrich-host" = nixpkgs.lib.nixosSystem  {
 				system = "x86_64-linux";
-				specialArgs = inputs;
+				extraSpecialArgs = { inherit inputs; };
 	
 				modules = [
 					./nixos/configuration.nix
 
 					  home-manager.nixosModules.home-manager
 					{
-					
 					    home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;

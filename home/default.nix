@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, ... }:
 {
 	imports = [
 		./modules
 	];
+
+    colorscheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
 
 	nixpkgs.overlays = [
 		(self: super: {
