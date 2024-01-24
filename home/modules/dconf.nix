@@ -15,7 +15,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "background";
+      last-panel = "keyboard";
       window-state = mkTuple [ 980 640 true ];
     };
 
@@ -67,7 +67,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "org-gnome-console" "org-gnome-geary" ];
+      application-children = [ "org-gnome-console" "org-gnome-geary" "org-gnome-settings" ];
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-console" = {
@@ -76,6 +76,10 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications/application/org-gnome-geary" = {
       application-id = "org.gnome.Geary.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-settings" = {
+      application-id = "org.gnome.Settings.desktop";
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -141,6 +145,16 @@ with lib.hm.gvariant;
       night-light-enabled = false;
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Control>grave";
+      command = "alacritty";
+      name = "Alacritty";
+    };
+
     "org/gnome/shell" = {
       welcome-dialog-last-shown-version = "45.3";
     };
@@ -187,13 +201,5 @@ with lib.hm.gvariant;
       window-size = mkTuple [ 1366 689 ];
     };
 
-    "/org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
-      "custom-keybindings/custom0" = {
-        binding = "<Control>grave";
-        command = "alacritty";
-        name    = "Alacritty";
-      };
-    };
   };
 }

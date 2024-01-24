@@ -1,8 +1,25 @@
 {pkgs, ...}: {
 	# enable dark mode for all gtk4 applications
 	# https://nixos.wiki/wiki/GNOME#Dark_mode
+    home.packages = with pkgs; [
+      gnomeExtensions.dash2dock-lite
+      gnomeExtensions.dash-to-dock
+
+      dconf2nix
+    ];
+
 	dconf = {
 		enable = true;
+        settings = {
+          "org/gnome/shell" = {
+            disable-user-extensions = false;
+              command-history = [ "gnome-tweaks" ];
+             enabled-extensions = [
+              "dash2dock-lite@icedman.github.com"
+              "dash-to-dock@micxgx.gmail.com"
+            ];
+          };
+        };
         #settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 	};
 
