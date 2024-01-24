@@ -1,10 +1,11 @@
-{ config, pkgs, nix-colors, ... }:
+{ config, pkgs, inputs, ... }:
 {
 	imports = [
+        inputs.nix-colors.homeManagerModules.default
 		./modules
 	];
 
-    colorscheme = nix-colors.colorSchemes.catppuccin-frappe;
+    colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
 
 	nixpkgs.overlays = [
 		(self: super: {
