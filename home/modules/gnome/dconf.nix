@@ -58,16 +58,28 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      cursor-theme = "Numix-Cursor-Light";
+      cursor-theme = "Adwaita";
       font-antialiasing = "grayscale";
       font-hinting = "slight";
       gtk-enable-primary-paste = true;
-      gtk-theme = "whitesur-gtk-theme";
-      icon-theme = "whitesur-icon-theme";
+      gtk-theme = "Adwaita";
+      icon-theme = "Adwaita";
     };
 
     "org/gnome/desktop/notifications" = {
       application-children = [ "org-gnome-console" "org-gnome-geary" "org-gnome-settings" ];
+    };
+
+    "org/gnome/desktop/notifications/application/firefox" = {
+      application-id = "firefox.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/gnome-network-panel" = {
+      application-id = "gnome-network-panel.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/gnome-power-panel" = {
+      application-id = "gnome-power-panel.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-console" = {
@@ -84,6 +96,7 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/peripherals/touchpad" = {
       click-method = "areas";
+      disable-while-typing = true;
       tap-to-click = true;
       two-finger-scrolling-enabled = true;
     };
@@ -156,7 +169,65 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
+      command-history = [ "gnome-tweaks" ];
+      disable-user-extensions = false;
+      disabled-extensions = [ "apps-menu@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "dash-to-dock@micxgx.gmail.com" "places-menu@gnome-shell-extensions.gcampax.github.com" ];
+      enabled-extensions = [ "dash2dock-lite@icedman.github.com" "dash-to-dock@micxgx.gmail.com" "panel-free@fthx" ];
+      favorite-apps = [ "org.gnome.Nautilus.desktop" "org.gnome.tweaks.desktop" "org.gnome.Extensions.desktop" ];
       welcome-dialog-last-shown-version = "45.3";
+    };
+
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      background-opacity = 0.8;
+      dash-max-icon-size = 48;
+      dock-position = "BOTTOM";
+      height-fraction = 0.9;
+      isolate-workspaces = true;
+      preferred-monitor = -2;
+      preferred-monitor-by-connector = "eDP-1";
+      show-favorites = true;
+      show-running = true;
+    };
+
+    "org/gnome/shell/extensions/dash2dock-lite" = {
+      animate-icons-unmute = true;
+      animation-magnify = 0.0;
+      animation-rise = 0.32;
+      animation-spread = 0.0;
+      apps-icon = true;
+      autohide-dash = true;
+      autohide-dodge = false;
+      background-color = mkTuple [ 7.000000029802322e-2 5.3666699677705765e-3 5.3666699677705765e-3 0.25 ];
+      border-radius = 0.0;
+      border-thickness = 0;
+      calendar-icon = true;
+      clock-icon = true;
+      customize-topbar = true;
+      debug-visual = false;
+      dock-location = 0;
+      edge-distance = 0.2197802197802199;
+      favorites-only = true;
+      icon-effect = 0;
+      icon-effect-color = mkTuple [ 0.2433333396911621 3.893334046006203e-2 3.893334046006203e-2 1.0 ];
+      icon-resolution = 0;
+      icon-size = 0.0;
+      monitor-count = 1;
+      mounted-icon = true;
+      msg-to-ext = "";
+      notification-badge-style = 0;
+      open-app-animation = true;
+      panel-mode = false;
+      peek-hidden-icons = false;
+      pressure-sense = true;
+      running-indicator-color = mkTuple [ 3.6666665226221085e-2 2.3222221061587334e-3 2.3222221061587334e-3 1.0 ];
+      running-indicator-style = 12;
+      scroll-sensitivity = 0.0;
+      shrink-icons = true;
+      trash-icon = true;
+    };
+
+    "org/gnome/shell/extensions/window-list" = {
+      grouping-mode = "never";
     };
 
     "org/gnome/shell/world-clocks" = {
@@ -164,11 +235,18 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/software" = {
+      check-timestamp = mkInt64 1706116226;
       first-run = false;
+      flatpak-purge-timestamp = mkInt64 1706113441;
     };
 
     "org/gnome/tweaks" = {
       show-extensions-notice = false;
+    };
+
+    "org/gtk/gtk4/settings/color-chooser" = {
+      custom-colors = [ (mkTuple [ 3.6666665226221085e-2 2.3222221061587334e-3 2.3222221061587334e-3 1.0 ]) (mkTuple [ 0.5133333206176758 3.7644438445568085e-2 3.7644438445568085e-2 1.0 ]) (mkTuple [ 7.000000029802322e-2 5.366665776818991e-3 5.366665776818991e-3 0.25 ]) (mkTuple [ 0.8133333325386047 0.32804441452026367 0.32804441452026367 0.25 ]) (mkTuple [ 3.333333507180214e-2 1.444443129003048e-3 1.444443129003048e-3 0.25 ]) (mkTuple [ 3.333333507180214e-2 1.444445108063519e-3 1.444445108063519e-3 0.25 ]) (mkTuple [ 0.0 0.0 0.0 0.25 ]) (mkTuple [ 0.2433333396911621 3.893334046006203e-2 3.893334046006203e-2 1.0 ]) ];
+      selected-color = mkTuple [ true 3.6666665226221085e-2 2.3222221061587334e-3 2.3222221061587334e-3 1.0 ];
     };
 
     "org/gtk/gtk4/settings/file-chooser" = {
