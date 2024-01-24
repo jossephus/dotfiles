@@ -3,11 +3,11 @@
 	# https://nixos.wiki/wiki/GNOME#Dark_mode
 	dconf = {
 		enable = true;
-	        settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+        #settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 	};
 
 	# gtk: change icontheme and cursortheme
-	gtk = {
+	/*gtk = {
 		enable = true;
 		
 		iconTheme = {
@@ -37,5 +37,5 @@
 		};
 
 	};
-
+  */
 }
