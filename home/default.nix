@@ -4,7 +4,7 @@
 		./modules
 	];
 
-    colorscheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
+    colorscheme = nix-colors.colorSchemes.catppuccin-frappe;
 
 	nixpkgs.overlays = [
 		(self: super: {
