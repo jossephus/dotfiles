@@ -94,6 +94,10 @@ with lib.hm.gvariant;
       application-id = "org.gnome.Settings.desktop";
     };
 
+    "org/gnome/desktop/peripherals/keyboard" = {
+      numlock-state = true;
+    };
+
     "org/gnome/desktop/peripherals/touchpad" = {
       click-method = "areas";
       disable-while-typing = true;
@@ -169,10 +173,10 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      command-history = [ "gnome-tweaks" ];
+      command-history = [ "gnome-tweaks" "gnome-tweaks" ];
       disable-user-extensions = false;
       disabled-extensions = [ "apps-menu@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "dash-to-dock@micxgx.gmail.com" "places-menu@gnome-shell-extensions.gcampax.github.com" ];
-      enabled-extensions = [ "dash2dock-lite@icedman.github.com" "dash-to-dock@micxgx.gmail.com" "panel-free@fthx" ];
+      enabled-extensions = [ "dash2dock-lite@icedman.github.com" "dash-to-dock@micxgx.gmail.com" "panel-free@fthx" "dash2dock-lite@icedman.github.com" "dash-to-dock@micxgx.gmail.com" "panel-free@fthx" ];
       favorite-apps = [ "org.gnome.Nautilus.desktop" "org.gnome.tweaks.desktop" "org.gnome.Extensions.desktop" ];
       welcome-dialog-last-shown-version = "45.3";
     };
@@ -197,7 +201,7 @@ with lib.hm.gvariant;
       apps-icon = true;
       autohide-dash = true;
       autohide-dodge = false;
-      background-color = mkTuple [ 7.000000029802322e-2 5.3666699677705765e-3 5.3666699677705765e-3 0.25 ];
+      background-color = mkTuple [ 7.0e-2 5.367e-3 5.367e-3 0.25 ];
       border-radius = 0.0;
       border-thickness = 0;
       calendar-icon = true;
@@ -205,10 +209,10 @@ with lib.hm.gvariant;
       customize-topbar = true;
       debug-visual = false;
       dock-location = 0;
-      edge-distance = 0.2197802197802199;
+      edge-distance = 0.21978;
       favorites-only = true;
       icon-effect = 0;
-      icon-effect-color = mkTuple [ 0.2433333396911621 3.893334046006203e-2 3.893334046006203e-2 1.0 ];
+      icon-effect-color = mkTuple [ 0.243333 3.8933e-2 3.8933e-2 1.0 ];
       icon-resolution = 0;
       icon-size = 0.0;
       monitor-count = 1;
@@ -219,7 +223,7 @@ with lib.hm.gvariant;
       panel-mode = false;
       peek-hidden-icons = false;
       pressure-sense = true;
-      running-indicator-color = mkTuple [ 3.6666665226221085e-2 2.3222221061587334e-3 2.3222221061587334e-3 1.0 ];
+      running-indicator-color = mkTuple [ 3.6667e-2 2.322e-3 2.322e-3 1.0 ];
       running-indicator-style = 12;
       scroll-sensitivity = 0.0;
       shrink-icons = true;
@@ -245,8 +249,8 @@ with lib.hm.gvariant;
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 3.6666665226221085e-2 2.3222221061587334e-3 2.3222221061587334e-3 1.0 ]) (mkTuple [ 0.5133333206176758 3.7644438445568085e-2 3.7644438445568085e-2 1.0 ]) (mkTuple [ 7.000000029802322e-2 5.366665776818991e-3 5.366665776818991e-3 0.25 ]) (mkTuple [ 0.8133333325386047 0.32804441452026367 0.32804441452026367 0.25 ]) (mkTuple [ 3.333333507180214e-2 1.444443129003048e-3 1.444443129003048e-3 0.25 ]) (mkTuple [ 3.333333507180214e-2 1.444445108063519e-3 1.444445108063519e-3 0.25 ]) (mkTuple [ 0.0 0.0 0.0 0.25 ]) (mkTuple [ 0.2433333396911621 3.893334046006203e-2 3.893334046006203e-2 1.0 ]) ];
-      selected-color = mkTuple [ true 3.6666665226221085e-2 2.3222221061587334e-3 2.3222221061587334e-3 1.0 ];
+      custom-colors = [ (mkTuple [ 3.6667e-2 2.322e-3 2.322e-3 1.0 ]) (mkTuple [ 0.513333 3.7644e-2 3.7644e-2 1.0 ]) (mkTuple [ 7.0e-2 5.367e-3 5.367e-3 0.25 ]) (mkTuple [ 0.813333 0.328044 0.328044 0.25 ]) (mkTuple [ 3.3333e-2 1.444e-3 1.444e-3 0.25 ]) (mkTuple [ 3.3333e-2 1.444e-3 1.444e-3 0.25 ]) (mkTuple [ 0.0 0.0 0.0 0.25 ]) (mkTuple [ 0.243333 3.8933e-2 3.8933e-2 1.0 ]) ];
+      selected-color = mkTuple [ true 3.6667e-2 2.322e-3 2.322e-3 1.0 ];
     };
 
     "org/gtk/gtk4/settings/file-chooser" = {

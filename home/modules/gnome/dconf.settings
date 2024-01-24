@@ -70,6 +70,9 @@ application-id='org.gnome.Geary.desktop'
 [org/gnome/desktop/notifications/application/org-gnome-settings]
 application-id='org.gnome.Settings.desktop'
 
+[org/gnome/desktop/peripherals/keyboard]
+numlock-state=true
+
 [org/gnome/desktop/peripherals/touchpad]
 click-method='areas'
 disable-while-typing=true
@@ -131,10 +134,10 @@ command='alacritty'
 name='Alacritty'
 
 [org/gnome/shell]
-command-history=['gnome-tweaks']
+command-history=['gnome-tweaks', 'gnome-tweaks']
 disable-user-extensions=false
 disabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'places-menu@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['dash2dock-lite@icedman.github.com', 'dash-to-dock@micxgx.gmail.com', 'panel-free@fthx']
+enabled-extensions=['dash2dock-lite@icedman.github.com', 'dash-to-dock@micxgx.gmail.com', 'panel-free@fthx', 'dash2dock-lite@icedman.github.com', 'dash-to-dock@micxgx.gmail.com', 'panel-free@fthx']
 favorite-apps=['org.gnome.Nautilus.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Extensions.desktop']
 welcome-dialog-last-shown-version='45.3'
 
@@ -157,7 +160,7 @@ animation-spread=0.0
 apps-icon=true
 autohide-dash=true
 autohide-dodge=false
-background-color=(0.070000000298023224, 0.0053666699677705765, 0.0053666699677705765, 0.25)
+background-color=(0.070000000000000007, 0.0053670000000000002, 0.0053670000000000002, 0.25)
 border-radius=0.0
 border-thickness=0
 calendar-icon=true
@@ -165,10 +168,10 @@ clock-icon=true
 customize-topbar=true
 debug-visual=false
 dock-location=0
-edge-distance=0.21978021978021989
+edge-distance=0.21978
 favorites-only=true
 icon-effect=0
-icon-effect-color=(0.24333333969116211, 0.038933340460062027, 0.038933340460062027, 1.0)
+icon-effect-color=(0.24333299999999999, 0.038933000000000002, 0.038933000000000002, 1.0)
 icon-resolution=0
 icon-size=0.0
 monitor-count=1
@@ -179,7 +182,7 @@ open-app-animation=true
 panel-mode=false
 peek-hidden-icons=false
 pressure-sense=true
-running-indicator-color=(0.036666665226221085, 0.0023222221061587334, 0.0023222221061587334, 1.0)
+running-indicator-color=(0.036666999999999998, 0.0023219999999999998, 0.0023219999999999998, 1.0)
 running-indicator-style=12
 scroll-sensitivity=0.0
 shrink-icons=true
@@ -189,7 +192,7 @@ trash-icon=true
 grouping-mode='never'
 
 [org/gnome/shell/world-clocks]
-locations=@av []
+locations=@as []
 
 [org/gnome/software]
 check-timestamp=int64 1706116226
@@ -200,8 +203,8 @@ flatpak-purge-timestamp=int64 1706113441
 show-extensions-notice=false
 
 [org/gtk/gtk4/settings/color-chooser]
-custom-colors=[(0.036666665226221085, 0.0023222221061587334, 0.0023222221061587334, 1.0), (0.51333332061767578, 0.037644438445568085, 0.037644438445568085, 1.0), (0.070000000298023224, 0.0053666657768189907, 0.0053666657768189907, 0.25), (0.81333333253860474, 0.32804441452026367, 0.32804441452026367, 0.25), (0.033333335071802139, 0.0014444431290030479, 0.0014444431290030479, 0.25), (0.033333335071802139, 0.001444445108063519, 0.001444445108063519, 0.25), (0.0, 0.0, 0.0, 0.25), (0.24333333969116211, 0.038933340460062027, 0.038933340460062027, 1.0)]
-selected-color=(true, 0.036666665226221085, 0.0023222221061587334, 0.0023222221061587334, 1.0)
+custom-colors=[(0.036666999999999998, 0.0023219999999999998, 0.0023219999999999998, 1.0), (0.51333300000000004, 0.037643999999999997, 0.037643999999999997, 1.0), (0.070000000000000007, 0.0053670000000000002, 0.0053670000000000002, 0.25), (0.81333299999999997, 0.328044, 0.328044, 0.25), (0.033333000000000002, 0.001444, 0.001444, 0.25), (0.033333000000000002, 0.001444, 0.001444, 0.25), (0.0, 0.0, 0.0, 0.25), (0.24333299999999999, 0.038933000000000002, 0.038933000000000002, 1.0)]
+selected-color=(true, 0.036666999999999998, 0.0023219999999999998, 0.0023219999999999998, 1.0)
 
 [org/gtk/gtk4/settings/file-chooser]
 date-format='regular'
