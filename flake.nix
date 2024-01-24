@@ -32,13 +32,13 @@
 		nixosConfigurations = {
 			"aldrich-host" = nixpkgs.lib.nixosSystem  {
 				system = "x86_64-linux";
-				extraSpecialArgs = { inherit inputs; };
 	
 				modules = [
 					./nixos/configuration.nix
 
 					  home-manager.nixosModules.home-manager
 					{
+				        extraSpecialArgs = { inherit inputs; };
 					    home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
