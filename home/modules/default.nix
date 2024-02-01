@@ -6,4 +6,7 @@
 		./vim
 
 	];
+  programs.bemenu = {
+    enable = true;
+  };
 }

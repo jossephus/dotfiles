@@ -35,7 +35,7 @@
 				system = "x86_64-linux";
 
 				modules = [
-          stylix.nixosModules.stylix
+          #stylix.nixosModules.stylix
 					./nixos/configuration.nix
 
 					  home-manager.nixosModules.home-manager
@@ -46,9 +46,9 @@
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
 					}
-          {
-            stylix.image = ./wallpapers/nix-dracula.png;
-          }
+          #{
+            #stylix.image = ./wallpapers/nix-dracula.png;
+          #}
 				];
 			};
 
