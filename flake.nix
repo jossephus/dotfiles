@@ -46,9 +46,9 @@
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
 					}
-          #{
-            #stylix.image = ./wallpapers/nix-dracula.png;
-          #}
+          {
+            stylix.image = ./wallpapers/nix-dracula.png;
+          }
 				];
 			};
 
