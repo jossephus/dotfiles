@@ -20,10 +20,10 @@
 
         vim-nixpkgs-unstable.url = "github:nixos/nixpkgs/f597e7e9fcf37d8ed14a12835ede0a7d362314bd";
 
-            stylix.url = "github:danth/stylix";
+            #stylix.url = "github:danth/stylix";
 	};
 
-    outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, stylix, ...}@inputs: 
+    outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: 
     let 
       pkgs = import nixpkgs {
         system = "x86_64-linux";
