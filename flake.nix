@@ -41,11 +41,14 @@
 					  home-manager.nixosModules.home-manager
 					{
             home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.specialArgs = { inherit stylix; };
+            #home-manager.specialArgs = { inherit stylix; };
             home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
 					}
+          #{
+            #stylix.image = ./wallpapers/nix-dracula.png;
+          #}
 				];
 			};
 
