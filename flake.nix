@@ -31,7 +31,7 @@
     in {
 
 		nixosConfigurations = {
-			"aldrich-host" = nixpkgs.lib.nixosSystem  {
+			"nixos" = nixpkgs.lib.nixosSystem  {
 				system = "x86_64-linux";
 
 				modules = [
@@ -46,6 +46,7 @@
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
 					}
+          #./home/modules/stylix.nix
           #{
             #stylix.image = ./wallpapers/nix-dracula.png;
           #}

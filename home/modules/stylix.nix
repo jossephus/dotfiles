@@ -1,6 +1,34 @@
-{pkgs, inputs, ....} : {
-  #inputs.stylix.image = pkgs.fetchurl {
-    #url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
-    #sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
-  #};
+{ pkgs, ... }:
+
+{
+  stylix = {
+    image = pkgs.fetchurl {
+      url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
+      sha256 = "tAX6qTm1/7v/auvCHrmRswJsScNieSWpXV6TCBhRP7Y=";
+    };
+
+    polarity = "dark";
+
+    fonts = {
+      serif = {
+        name = "Cantarell";
+        package = pkgs.cantarell-fonts;
+      };
+
+      sansSerif = {
+        name = "Cantarell";
+        package = pkgs.cantarell-fonts;
+      };
+
+      monospace = {
+        name = "Fira Code";
+        package = pkgs.fira-code;
+      };
+
+      sizes = {
+        applications = 11;
+        desktop = 11;
+      };
+    };
+  };
 }
