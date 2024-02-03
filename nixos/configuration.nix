@@ -11,6 +11,11 @@
       ./modules/gnome.nix
     ];
 
+	boot.loader = {
+	  efi = {
+	    efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
+	  };
+};
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
