@@ -11,8 +11,10 @@
   # Configure keymap in X11
   # this didnt work but lets keep it there for future reference.
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      variant = "";
+      layout = "us";
+    };
     
     config = ''
 Section "InputClass"
