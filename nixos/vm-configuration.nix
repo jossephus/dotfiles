@@ -7,6 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      ./common-configuration.nix
       ./hardware-configuration.nix
       ./modules/gnome.nix
     ];

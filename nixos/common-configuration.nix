@@ -11,15 +11,10 @@
       ./modules/gnome.nix
     ];
 
-	#boot.loader = {
-	#  efi = {
-	#    efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
-	#  };
-	# };
   boot.loader.grub = {
-#	enable = true;
-#    efiSupport = true;
-#    efiInstallAsRemovable = true;
+    #	enable = true;
+    #    efiSupport = true;
+    #    efiInstallAsRemovable = true;
     device = "nodev";
   };
   # Bootloader.

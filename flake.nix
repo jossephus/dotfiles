@@ -31,12 +31,12 @@
     in {
 
 		nixosConfigurations = {
-			"nixos" = nixpkgs.lib.nixosSystem  {
+			"aldrich-vm" = nixpkgs.lib.nixosSystem  {
 				system = "x86_64-linux";
 
 				modules = [
           #stylix.nixosModules.stylix
-					./nixos/configuration.nix
+					./nixos/vm-configuration.nix
 
 					  home-manager.nixosModules.home-manager
 					{
@@ -46,10 +46,24 @@
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
 					}
-          #./home/modules/stylix.nix
-          #{
-            #stylix.image = ./wallpapers/nix-dracula.png;
-          #}
+				];
+			};
+
+			"aldrich-main" = nixpkgs.lib.nixosSystem  {
+				system = "x86_64-linux";
+
+				modules = [
+          #stylix.nixosModules.stylix
+					./nixos/main-configuration.nix
+
+					  home-manager.nixosModules.home-manager
+					{
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            #home-manager.specialArgs = { inherit stylix; };
+            home-manager.useGlobalPkgs = true;
+						home-manager.useUserPackages = true;
+						home-manager.users.aldrich = import ./home;
+					}
 				];
 			};
 
