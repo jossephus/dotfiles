@@ -11,19 +11,20 @@
       ./modules/gnome.nix
     ];
 
-	boot.loader = {
-	  efi = {
-	    efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
-	  };
-};
+	#boot.loader = {
+	#  efi = {
+	#    efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
+	#  };
+	# };
   boot.loader.grub = {
+	enable = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
     device = "nodev";
   };
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "aldrich-host"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
