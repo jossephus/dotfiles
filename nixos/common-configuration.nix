@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./modules/gnome.nix
-      #./modules/stylix.nix
+      ./modules/stylix.nix
     ];
 
   networking.hostName = "aldrich-host"; # Define your hostname.

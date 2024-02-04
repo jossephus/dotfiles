@@ -8,7 +8,7 @@
     #};
     image = ../../wallpapers/nix-dracula.png;
 
-    #polarity = "dark";
+    polarity = "dark";
 
     #fonts = {
       #serif = {

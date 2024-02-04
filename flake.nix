@@ -47,7 +47,7 @@
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
 					}
-          #stylix.nixosModules.stylix
+          stylix.nixosModules.stylix
 				];
 			};
 

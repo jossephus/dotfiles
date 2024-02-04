@@ -42,29 +42,29 @@ with lib.hm.gvariant;
       translate = true;
     };
 
-    "org/gnome/desktop/background" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri = "file:///etc/nixos/wallpapers/nix-dracula.png";
-      picture-uri-dark = "file:///home/aldrich/.local/share/backgrounds/2024-01-24-18-28-42-nix-dracula.png";
-      primary-color = "#000000000000";
-      secondary-color = "#000000000000";
-    };
+    #"org/gnome/desktop/background" = {
+      #color-shading-type = "solid";
+      #picture-options = "zoom";
+      ##picture-uri = "file:///etc/nixos/wallpapers/nix-dracula.png";
+      #picture-uri-dark = "file:///home/aldrich/.local/share/backgrounds/2024-01-24-18-28-42-nix-dracula.png";
+      #primary-color = "#000000000000";
+      #secondary-color = "#000000000000";
+    #};
 
     "org/gnome/desktop/input-sources" = {
       sources = [ (mkTuple [ "xkb" "us" ]) ];
       xkb-options = [ "terminate:ctrl_alt_bksp" ];
     };
 
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      cursor-theme = "Adwaita";
-      font-antialiasing = "grayscale";
-      font-hinting = "slight";
-      gtk-enable-primary-paste = true;
-      gtk-theme = "Adwaita";
-      icon-theme = "Adwaita";
-    };
+    #"org/gnome/desktop/interface" = {
+      ##color-scheme = "prefer-dark";
+      #cursor-theme = "Adwaita";
+      #font-antialiasing = "grayscale";
+      #font-hinting = "slight";
+      #gtk-enable-primary-paste = true;
+      #gtk-theme = "Adwaita";
+      #icon-theme = "Adwaita";
+    #};
 
     "org/gnome/desktop/notifications" = {
       application-children = [ "org-gnome-console" "org-gnome-geary" "org-gnome-settings" ];
@@ -110,13 +110,13 @@ with lib.hm.gvariant;
       recent-files-max-age = -1;
     };
 
-    "org/gnome/desktop/screensaver" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri = "file:///home/aldrich/.local/share/backgrounds/2024-01-24-18-28-42-nix-dracula.png";
-      primary-color = "#000000000000";
-      secondary-color = "#000000000000";
-    };
+    #"org/gnome/desktop/screensaver" = {
+      #color-shading-type = "solid";
+      #picture-options = "zoom";
+      ##picture-uri = "file:///home/aldrich/.local/share/backgrounds/2024-01-24-18-28-42-nix-dracula.png";
+      #primary-color = "#000000000000";
+      #secondary-color = "#000000000000";
+    #};
 
     "org/gnome/desktop/search-providers" = {
       sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Nautilus.desktop" ];
