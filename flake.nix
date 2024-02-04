@@ -35,7 +35,7 @@
 				system = "x86_64-linux";
 
 				modules = [
-          stylix.nixosModules.stylix
+          #stylix.nixosModules.stylix
 					./nixos/vm-configuration.nix
 
 					  home-manager.nixosModules.home-manager
