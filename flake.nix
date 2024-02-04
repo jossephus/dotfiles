@@ -53,9 +53,8 @@
 				system = "x86_64-linux";
 
 				modules = [
-          stylix.nixosModules.stylix
+          #stylix.nixosModules.stylix
 					./nixos/main-configuration.nix
-          ./home/modules/stylix.nix
 
 					  home-manager.nixosModules.home-manager
 					{
