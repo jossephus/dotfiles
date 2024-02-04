@@ -17,9 +17,9 @@
 	#  };
 	# };
   boot.loader.grub = {
-	enable = true;
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+#	enable = true;
+#    efiSupport = true;
+#    efiInstallAsRemovable = true;
     device = "nodev";
   };
   # Bootloader.
