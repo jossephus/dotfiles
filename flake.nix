@@ -23,7 +23,7 @@
     stylix.url = "github:danth/stylix";
 	};
 
-    outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: 
+    outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, stylix, ...}@inputs: 
     let 
       pkgs = import nixpkgs {
         system = "x86_64-linux";
