@@ -11,17 +11,7 @@
       ./hardware-configuration.nix
     ];
 
-  boot.loader.grub = {
-    #	enable = true;
-    # efiSupport = true;
-    # efiInstallAsRemovable = true;
-    device = "nodev";
-  };
-	#boot.loader = {
-	#  efi = {
-	#    efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
-	#  };
-	# };
-
-  virtualisation.vmware.guest.enable = true;
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 }
