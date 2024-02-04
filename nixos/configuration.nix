@@ -16,6 +16,11 @@
 	    efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
 	  };
 };
+  boot.loader.grub = {
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+    device = "nodev";
+  };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
