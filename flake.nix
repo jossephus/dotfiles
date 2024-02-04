@@ -20,7 +20,10 @@
 
         vim-nixpkgs-unstable.url = "github:nixos/nixpkgs/f597e7e9fcf37d8ed14a12835ede0a7d362314bd";
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+			inputs.nixpkgs.follows = "nixpkgs";
+    };
 	};
 
     outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, stylix, ...}@inputs: 
@@ -35,9 +38,7 @@
 				system = "x86_64-linux";
 
 				modules = [
-          #stylix.nixosModules.stylix
 					./nixos/vm-configuration.nix
-
 					  home-manager.nixosModules.home-manager
 					{
             home-manager.extraSpecialArgs = { inherit inputs; };
@@ -46,6 +47,7 @@
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
 					}
+          #stylix.nixosModules.stylix
 				];
 			};
 
