@@ -39,6 +39,18 @@
     LC_TIME = "am_ET";
   };
 
+  fonts = {
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    ];
+
+    fontConfig = {
+      defaultFonts = {
+          monospace = [ "Fira Code Nerd Font" ];
+      };
+    };
+  };
+
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
