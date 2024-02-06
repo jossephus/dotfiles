@@ -44,7 +44,7 @@
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     ];
 
-    fontConfig = {
+    fontconfig = {
       defaultFonts = {
           monospace = [ "Fira Code Nerd Font" ];
       };

@@ -4,6 +4,7 @@
         ./zoxide.nix
         ./nvim
 		./vim
+    ./vscode.nix
 
 	];
 }
