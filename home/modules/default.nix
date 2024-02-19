@@ -5,6 +5,7 @@
         ./nvim
 		./vim
     ./vscode.nix
+    ./zathura.nix
 
 	];
 }

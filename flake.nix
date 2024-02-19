@@ -26,7 +26,7 @@
     };
 	};
 
-    outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, /*stylix,*/ ...}@inputs: 
+    outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, stylix, ...}@inputs: 
     let 
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -55,7 +55,6 @@
 				system = "x86_64-linux";
 
 				modules = [
-          #stylix.nixosModules.stylix
 					./nixos/main-configuration.nix
 
 					  home-manager.nixosModules.home-manager
@@ -66,6 +65,7 @@
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
 					}
+                    stylix.nixosModules.stylix
 				];
 			};
 
