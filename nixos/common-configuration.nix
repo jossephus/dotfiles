@@ -121,6 +121,10 @@
   # for node version manager
   pkgs.volta
 
+  pkgs.motrix
+
+  pkgs.transmission
+
   # Golang
   pkgs.go
 
