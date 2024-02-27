@@ -85,7 +85,7 @@
       firefox
       steam
       gnome.gnome-tweaks
-      transmission
+      transmission-qt
       #spotify
       telegram-desktop
       wezterm
