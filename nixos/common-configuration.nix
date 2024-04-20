@@ -8,7 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./modules/gnome.nix
-      ./modules/stylix.nix
+      #./modules/hyprland.nix
+      #./modules/stylix.nix
     ];
 
   networking.hostName = "aldrich-host"; # Define your hostname.
@@ -91,6 +92,7 @@
       wezterm
       alacritty
 
+
       sublime4
 
       # lets try installing packages here
@@ -117,13 +119,25 @@
 	pkgs.helix
 	pkgs.rustup
 	pkgs.gcc
+  pkgs.kitty
 
   # for node version manager
   pkgs.volta
 
   pkgs.motrix
 
-  pkgs.transmission
+  pkgs.transmission 
+
+  # 
+  pkgs.waybar
+
+  pkgs.eww
+
+  pkgs.dunst
+
+  pkgs.swww
+
+  pkgs.rofi-wayland
 
   # Golang
   pkgs.go

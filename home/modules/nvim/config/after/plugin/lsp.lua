@@ -58,6 +58,13 @@ lspconfig.volar.setup {
   },
 }
 
+lspconfig.clangd.setup {
+  cmd = {
+    "clangd",
+    "--offset-encoding=utf-16",
+  },
+}
+
 lspconfig.lua_ls.setup({
   settings = {
     Lua = {
@@ -276,6 +283,7 @@ lsp.on_attach(function(client, bufnr)
         fileypes = { ["vue"] = true, ["svelte"] = true },
       }),
       null_ls.builtins.formatting.rustfmt,
+      null_ls.builtins.formatting.clang_format,
     },
   })
 

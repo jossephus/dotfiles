@@ -10,6 +10,9 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+    # Hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
 		
 		# Helix Editor
 		helix.url = "github:helix-editor/helix";
@@ -20,13 +23,13 @@
 
         vim-nixpkgs-unstable.url = "github:nixos/nixpkgs/f597e7e9fcf37d8ed14a12835ede0a7d362314bd";
 
-    stylix = {
-      url = "github:danth/stylix";
-			inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #stylix = {
+      #url = "github:danth/stylix";
+			#inputs.nixpkgs.follows = "nixpkgs";
+    #};
 	};
 
-    outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, stylix, ...}@inputs: 
+    outputs = {self, nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: 
     let 
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -54,6 +57,8 @@
 			"aldrich-main" = nixpkgs.lib.nixosSystem  {
 				system = "x86_64-linux";
 
+        specialArgs = { inherit inputs; }; # this is the important part
+
 				modules = [
 					./nixos/main-configuration.nix
 
@@ -65,7 +70,7 @@
 						home-manager.useUserPackages = true;
 						home-manager.users.aldrich = import ./home;
 					}
-                    stylix.nixosModules.stylix
+                    #stylix.nixosModules.stylix
 				];
 			};
 

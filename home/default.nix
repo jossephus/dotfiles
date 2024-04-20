@@ -34,6 +34,7 @@
         typst
 
         rubik
+        vlc
 	];
 
     fonts.fontconfig.enable = true;
