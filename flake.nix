@@ -34,6 +34,7 @@
       pkgs = import nixpkgs {
         system = "x86_64-linux";
       };
+      dataflare = pkgs.callPackage ./packages/dataflare.nix {};
     in {
 
 		nixosConfigurations = {
@@ -57,7 +58,7 @@
 			"aldrich-main" = nixpkgs.lib.nixosSystem  {
 				system = "x86_64-linux";
 
-        specialArgs = { inherit inputs; }; # this is the important part
+        specialArgs = { inherit inputs; inherit dataflare; }; # this is the important part
 
 				modules = [
 					./nixos/main-configuration.nix
