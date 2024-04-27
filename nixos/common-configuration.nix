@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  outputs,
   ...
 }: {
   imports = [
@@ -112,6 +113,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+     #outputs.overlays.modifications
+  ];
 
   # Allow insecure packages
   nixpkgs.config.permittedInsecurePackages = [
@@ -123,7 +127,7 @@
   # $ nix search wget
   environment.systemPackages = [
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    (pkgs.callPackage ../apps/dataflare.nix {  })
+    (pkgs.callPackage ../pkgs/apps/dataflare.nix {  })
     pkgs.wget
     pkgs.git
     pkgs.helix

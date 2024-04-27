@@ -42,10 +42,13 @@
     android-nixpkgs,
     ...
   } @ inputs: let
+    inherit (self) outputs;
     pkgs = import nixpkgs {
       system = "x86_64-linux";
     };
   in {
+    overlays = import ./overlays { inherit inputs; };
+
     nixosConfigurations = {
       "aldrich-vm" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -67,7 +70,7 @@
       "aldrich-main" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        specialArgs = {inherit inputs;}; # this is the important part
+        specialArgs = {inherit inputs outputs; }; # this is the important part
 
         modules = [
           ./nixos/main-configuration.nix
