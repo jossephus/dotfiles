@@ -1,16 +1,25 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, dataflare, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./modules/gnome.nix
-      #./modules/hyprland.nix
-      #./modules/stylix.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./modules/gnome.nix
+    #./modules/hyprland.nix
+    #./modules/stylix.nix
+  ];
+
+  nix.extraOptions = ''
+  trusted-users = root aldrich
+
+  extra-substituters = https://nixpkgs-python.cachix.org
+  extra-trusted-public-keys = nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+
+  '';
 
   networking.hostName = "aldrich-host"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -42,16 +51,15 @@
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+      (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
     ];
 
     fontconfig = {
       defaultFonts = {
-          monospace = [ "Fira Code Nerd Font" ];
+        monospace = ["Fira Code Nerd Font"];
       };
     };
   };
-
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -80,10 +88,13 @@
   users.users.aldrich = {
     isNormalUser = true;
     description = "aldrich";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-
       firefox
+      protonvpn-gui
+      gtkwave
+      #kicad-small
+      google-chrome
       steam
       gnome.gnome-tweaks
       transmission-qt
@@ -91,7 +102,6 @@
       telegram-desktop
       wezterm
       alacritty
-
 
       sublime4
 
@@ -105,53 +115,58 @@
 
   # Allow insecure packages
   nixpkgs.config.permittedInsecurePackages = [
-          # open ssl
-          "openssl-1.1.1w"
-                                  
+    # open ssl
+    "openssl-1.1.1w"
   ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
-   	# vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    dataflare
-   	pkgs.wget
-	pkgs.git
-	pkgs.helix
-	pkgs.rustup
-	pkgs.gcc
-  pkgs.kitty
+    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    (pkgs.callPackage ../apps/dataflare.nix {  })
+    pkgs.wget
+    pkgs.git
+    pkgs.helix
+    pkgs.rustup
+    pkgs.gcc
+    pkgs.kitty
 
-  # for node version manager
-  pkgs.volta
+    pkgs.htop
 
-  pkgs.motrix
+    # for node version manager
+    pkgs.volta
 
-  pkgs.transmission 
+    pkgs.motrix
 
-  # 
-  pkgs.waybar
+    pkgs.transmission
 
-  pkgs.eww
+    #
+    pkgs.waybar
 
-  pkgs.dunst
+    pkgs.eww
 
-  pkgs.swww
+    pkgs.dunst
 
-  pkgs.rofi-wayland
+    pkgs.swww
 
-  # Golang
-  pkgs.go
+    pkgs.rofi-wayland
 
-    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in 
-       pkgs.buildFHSUserEnv (base // {
-              name = "fhs";
-                   targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config]; 
-                        profile = "export FHS=1"; 
-                             runScript = "bash"; 
-                                  extraOutputsToInstall = ["dev"];
-                                     }))
+    # Golang
+    pkgs.go
 
+    pkgs.wl-clipboard
+
+    (let
+      base = pkgs.appimageTools.defaultFhsEnvArgs;
+    in
+      pkgs.buildFHSUserEnv (base
+        // {
+          name = "fhs";
+          targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+          profile = "export FHS=1";
+          runScript = "bash";
+          extraOutputsToInstall = ["dev"];
+        }))
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -183,5 +198,5 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
   # enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 }

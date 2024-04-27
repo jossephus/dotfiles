@@ -1,12 +1,9 @@
 # Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
-{ lib, ... }:
-
-with lib.hm.gvariant;
-
-{
+{lib, ...}:
+with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/Console" = {
-      last-window-size = mkTuple [ 1218 459 ];
+      last-window-size = mkTuple [1218 459];
     };
 
     "org/gnome/Geary" = {
@@ -16,58 +13,58 @@ with lib.hm.gvariant;
 
     "org/gnome/control-center" = {
       last-panel = "keyboard";
-      window-state = mkTuple [ 980 640 true ];
+      window-state = mkTuple [980 640 true];
     };
 
     "org/gnome/desktop/app-folders" = {
-      folder-children = [ "Utilities" "YaST" "Pardus" ];
+      folder-children = ["Utilities" "YaST" "Pardus"];
     };
 
     "org/gnome/desktop/app-folders/folders/Pardus" = {
-      categories = [ "X-Pardus-Apps" ];
+      categories = ["X-Pardus-Apps"];
       name = "X-Pardus-Apps.directory";
       translate = true;
     };
 
     "org/gnome/desktop/app-folders/folders/Utilities" = {
-      apps = [ "gnome-abrt.desktop" "gnome-system-log.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.Dictionary.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.fonts.desktop" "org.gnome.Loupe.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" "vinagre.desktop" ];
-      categories = [ "X-GNOME-Utilities" ];
+      apps = ["gnome-abrt.desktop" "gnome-system-log.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.Dictionary.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.fonts.desktop" "org.gnome.Loupe.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" "vinagre.desktop"];
+      categories = ["X-GNOME-Utilities"];
       name = "X-GNOME-Utilities.directory";
       translate = true;
     };
 
     "org/gnome/desktop/app-folders/folders/YaST" = {
-      categories = [ "X-SuSE-YaST" ];
+      categories = ["X-SuSE-YaST"];
       name = "suse-yast.directory";
       translate = true;
     };
 
     #"org/gnome/desktop/background" = {
-      #color-shading-type = "solid";
-      #picture-options = "zoom";
-      ##picture-uri = "file:///etc/nixos/wallpapers/nix-dracula.png";
-      #picture-uri-dark = "file:///home/aldrich/.local/share/backgrounds/2024-01-24-18-28-42-nix-dracula.png";
-      #primary-color = "#000000000000";
-      #secondary-color = "#000000000000";
+    #color-shading-type = "solid";
+    #picture-options = "zoom";
+    ##picture-uri = "file:///etc/nixos/wallpapers/nix-dracula.png";
+    #picture-uri-dark = "file:///home/aldrich/.local/share/backgrounds/2024-01-24-18-28-42-nix-dracula.png";
+    #primary-color = "#000000000000";
+    #secondary-color = "#000000000000";
     #};
 
     "org/gnome/desktop/input-sources" = {
-      sources = [ (mkTuple [ "xkb" "us" ]) ];
-      xkb-options = [ "terminate:ctrl_alt_bksp" ];
+      sources = [(mkTuple ["xkb" "us"])];
+      xkb-options = ["terminate:ctrl_alt_bksp"];
     };
 
     #"org/gnome/desktop/interface" = {
-      ##color-scheme = "prefer-dark";
-      #cursor-theme = "Adwaita";
-      #font-antialiasing = "grayscale";
-      #font-hinting = "slight";
-      #gtk-enable-primary-paste = true;
-      #gtk-theme = "Adwaita";
-      #icon-theme = "Adwaita";
+    ##color-scheme = "prefer-dark";
+    #cursor-theme = "Adwaita";
+    #font-antialiasing = "grayscale";
+    #font-hinting = "slight";
+    #gtk-enable-primary-paste = true;
+    #gtk-theme = "Adwaita";
+    #icon-theme = "Adwaita";
     #};
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "org-gnome-console" "org-gnome-geary" "org-gnome-settings" ];
+      application-children = ["org-gnome-console" "org-gnome-geary" "org-gnome-settings"];
     };
 
     "org/gnome/desktop/notifications/application/firefox" = {
@@ -111,15 +108,15 @@ with lib.hm.gvariant;
     };
 
     #"org/gnome/desktop/screensaver" = {
-      #color-shading-type = "solid";
-      #picture-options = "zoom";
-      ##picture-uri = "file:///home/aldrich/.local/share/backgrounds/2024-01-24-18-28-42-nix-dracula.png";
-      #primary-color = "#000000000000";
-      #secondary-color = "#000000000000";
+    #color-shading-type = "solid";
+    #picture-options = "zoom";
+    ##picture-uri = "file:///home/aldrich/.local/share/backgrounds/2024-01-24-18-28-42-nix-dracula.png";
+    #primary-color = "#000000000000";
+    #secondary-color = "#000000000000";
     #};
 
     "org/gnome/desktop/search-providers" = {
-      sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Nautilus.desktop" ];
+      sort-order = ["org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Nautilus.desktop"];
     };
 
     "org/gnome/desktop/session" = {
@@ -127,12 +124,12 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      maximize = [ "<Control>Return" ];
+      maximize = ["<Control>Return"];
       switch-applications = [];
       switch-applications-backward = [];
-      switch-windows = [ "<Alt>Tab" ];
-      switch-windows-backward = [ "<Shift><Alt>Tab" ];
-      toggle-fullscreen = [ "<Alt>Return" ];
+      switch-windows = ["<Alt>Tab"];
+      switch-windows-backward = ["<Shift><Alt>Tab"];
+      toggle-fullscreen = ["<Alt>Return"];
     };
 
     "org/gnome/desktop/wm/preferences" = {
@@ -154,7 +151,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/nautilus/window-state" = {
-      initial-size = mkTuple [ 890 550 ];
+      initial-size = mkTuple [890 550];
       maximized = true;
     };
 
@@ -163,7 +160,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -173,11 +170,11 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      command-history = [ "gnome-tweaks" "gnome-tweaks" ];
+      command-history = ["gnome-tweaks" "gnome-tweaks"];
       disable-user-extensions = false;
-      disabled-extensions = [ "apps-menu@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "dash-to-dock@micxgx.gmail.com" "places-menu@gnome-shell-extensions.gcampax.github.com" ];
-      enabled-extensions = [ "dash2dock-lite@icedman.github.com" "dash-to-dock@micxgx.gmail.com" "panel-free@fthx" "dash2dock-lite@icedman.github.com" "dash-to-dock@micxgx.gmail.com" "panel-free@fthx" ];
-      favorite-apps = [ "org.gnome.Nautilus.desktop" "org.gnome.tweaks.desktop" "org.gnome.Extensions.desktop" ];
+      disabled-extensions = ["apps-menu@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "dash-to-dock@micxgx.gmail.com" "places-menu@gnome-shell-extensions.gcampax.github.com"];
+      enabled-extensions = ["dash2dock-lite@icedman.github.com" "dash-to-dock@micxgx.gmail.com" "panel-free@fthx" "dash2dock-lite@icedman.github.com" "dash-to-dock@micxgx.gmail.com" "panel-free@fthx"];
+      favorite-apps = ["org.gnome.Nautilus.desktop" "org.gnome.tweaks.desktop" "org.gnome.Extensions.desktop"];
       welcome-dialog-last-shown-version = "45.3";
     };
 
@@ -201,7 +198,7 @@ with lib.hm.gvariant;
       apps-icon = true;
       autohide-dash = true;
       autohide-dodge = false;
-      background-color = mkTuple [ 7.0e-2 5.367e-3 5.367e-3 0.25 ];
+      background-color = mkTuple [7.0e-2 5.367e-3 5.367e-3 0.25];
       border-radius = 0.0;
       border-thickness = 0;
       calendar-icon = true;
@@ -212,7 +209,7 @@ with lib.hm.gvariant;
       edge-distance = 0.21978;
       favorites-only = true;
       icon-effect = 0;
-      icon-effect-color = mkTuple [ 0.243333 3.8933e-2 3.8933e-2 1.0 ];
+      icon-effect-color = mkTuple [0.243333 3.8933e-2 3.8933e-2 1.0];
       icon-resolution = 0;
       icon-size = 0.0;
       monitor-count = 1;
@@ -223,7 +220,7 @@ with lib.hm.gvariant;
       panel-mode = false;
       peek-hidden-icons = false;
       pressure-sense = true;
-      running-indicator-color = mkTuple [ 3.6667e-2 2.322e-3 2.322e-3 1.0 ];
+      running-indicator-color = mkTuple [3.6667e-2 2.322e-3 2.322e-3 1.0];
       running-indicator-style = 12;
       scroll-sensitivity = 0.0;
       shrink-icons = true;
@@ -249,8 +246,8 @@ with lib.hm.gvariant;
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 3.6667e-2 2.322e-3 2.322e-3 1.0 ]) (mkTuple [ 0.513333 3.7644e-2 3.7644e-2 1.0 ]) (mkTuple [ 7.0e-2 5.367e-3 5.367e-3 0.25 ]) (mkTuple [ 0.813333 0.328044 0.328044 0.25 ]) (mkTuple [ 3.3333e-2 1.444e-3 1.444e-3 0.25 ]) (mkTuple [ 3.3333e-2 1.444e-3 1.444e-3 0.25 ]) (mkTuple [ 0.0 0.0 0.0 0.25 ]) (mkTuple [ 0.243333 3.8933e-2 3.8933e-2 1.0 ]) ];
-      selected-color = mkTuple [ true 3.6667e-2 2.322e-3 2.322e-3 1.0 ];
+      custom-colors = [(mkTuple [3.6667e-2 2.322e-3 2.322e-3 1.0]) (mkTuple [0.513333 3.7644e-2 3.7644e-2 1.0]) (mkTuple [7.0e-2 5.367e-3 5.367e-3 0.25]) (mkTuple [0.813333 0.328044 0.328044 0.25]) (mkTuple [3.3333e-2 1.444e-3 1.444e-3 0.25]) (mkTuple [3.3333e-2 1.444e-3 1.444e-3 0.25]) (mkTuple [0.0 0.0 0.0 0.25]) (mkTuple [0.243333 3.8933e-2 3.8933e-2 1.0])];
+      selected-color = mkTuple [true 3.6667e-2 2.322e-3 2.322e-3 1.0];
     };
 
     "org/gtk/gtk4/settings/file-chooser" = {
@@ -265,7 +262,7 @@ with lib.hm.gvariant;
       sort-order = "ascending";
       type-format = "category";
       view-type = "list";
-      window-size = mkTuple [ 859 372 ];
+      window-size = mkTuple [859 372];
     };
 
     "org/gtk/settings/file-chooser" = {
@@ -279,9 +276,8 @@ with lib.hm.gvariant;
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 0 0 ];
-      window-size = mkTuple [ 1366 689 ];
+      window-position = mkTuple [0 0];
+      window-size = mkTuple [1366 689];
     };
-
   };
 }

@@ -1,8 +1,10 @@
 {
-  inputs, pkgs, ...
+  inputs,
+  pkgs,
+  ...
 }: {
   programs.hyprland = {
-    enable = true; 
+    enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
   };
@@ -20,5 +22,4 @@
   environment.systemPackages = with pkgs; [
     dolphin
   ];
-
 }

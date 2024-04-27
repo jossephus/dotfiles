@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   programs.zathura = {
     enable = true;
   };
@@ -8,4 +11,3 @@
     "application/pdf" = "org.pwmt.zathura.desktop";
   };
 }
-
