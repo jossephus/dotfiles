@@ -101,6 +101,7 @@
       transmission-qt
       #spotify
       telegram-desktop
+      whatsapp-for-linux
       wezterm
       alacritty
 
