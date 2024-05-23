@@ -14,6 +14,16 @@
     #./modules/stylix.nix
   ];
 
+  services.create_ap = {
+    enable = true;
+    settings = {
+      INTERNET_IFACE = "eth0";
+      WIFI_IFACE = "wlan0";
+      SSID = "yohanness";
+      PASSPHRASE = "00001111";
+    };
+  };
+
   nix.extraOptions = ''
   trusted-users = root aldrich
 
@@ -89,9 +99,16 @@
   users.users.aldrich = {
     isNormalUser = true;
     description = "aldrich";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       firefox
+      #spotify
+      #android-studio
+
+      libreoffice-qt
+      hunspell
+      hunspellDicts.uk_UA
+
       protonvpn-gui
       gtkwave
       #kicad-small
@@ -124,9 +141,17 @@
     "openssl-1.1.1w"
   ];
 
+  systemd.extraConfig = ''
+    DefaultLimitNOFILE=1048576
+  '';
+
+  systemd.user.extraConfig = ''
+    DefaultLimitNOFILE=1048576
+  '';
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     (pkgs.callPackage ../pkgs/apps/dataflare.nix {  })
     pkgs.wget
@@ -135,6 +160,13 @@
     pkgs.rustup
     pkgs.gcc
     pkgs.kitty
+
+    pkgs.lutris
+
+    pkgs.unrar
+    pkgs.zip
+    pkgs.unzip
+
 
     pkgs.htop
 
@@ -160,6 +192,8 @@
     pkgs.go
 
     pkgs.wl-clipboard
+
+    pkgs.zed-editor
 
     (let
       base = pkgs.appimageTools.defaultFhsEnvArgs;
@@ -187,6 +221,14 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+
+  # Enable docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

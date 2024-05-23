@@ -7,6 +7,7 @@
   xsel,
   wl-clipboard,
 }: {
+  # this is not mine, I was exploring how overlays work, but I dont know where I copied it from.
   modifications = final: prev: {
     johannes = buildGoModule rec {
       pname = "johannes";

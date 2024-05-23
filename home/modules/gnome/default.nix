@@ -1,6 +1,6 @@
 {pkgs, runCommand,  ...}: 
 let 
-  generatedDconf = import./generate-dconf.nix;
+  generatedDconf = import ./generate-dconf.nix;
 in 
 {
   imports = [
@@ -9,7 +9,7 @@ in
     #                 dconf dump / > dconf.settings
     #                 dconf2nix -i dconf.settings -o dconf.nix
     ./dconf.nix
-    (builtins.readFile "${runDconf}/generated-dconf.nix")
+    #(builtins.readFile "${generatedDconf}/generated-dconf.nix")
     #./generated-dconf.nix
   ];
 
@@ -36,6 +36,7 @@ in
           "dash2dock-lite@icedman.github.com"
           "dash-to-dock@micxgx.gmail.com"
           "panel-free@fthx"
+          "pop-shell@system76.com"
         ];
       };
     };

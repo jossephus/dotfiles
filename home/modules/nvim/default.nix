@@ -8,6 +8,10 @@
     recursive = true;
   };
 
+  home.packages = with pkgs; [
+    nodePackages.volar
+  ];
+
   #xdg = {
   #enable = true;
   #configFile = {

@@ -6,6 +6,9 @@
     ./vim
     ./vscode.nix
     ./zathura.nix
+    ./spicetify.nix
+    ./firefox.nix
+    #./android.nix
   ];
 
   programs = {

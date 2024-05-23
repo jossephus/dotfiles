@@ -28,6 +28,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:jossephus/corrado";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #stylix = {
     #url = "github:danth/stylix";
     #inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +51,6 @@
     nixpkgs,
     home-manager,
     nixpkgs-unstable,
-    android-nixpkgs,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -79,7 +90,6 @@
           {
             home-manager.extraSpecialArgs = {
               inherit inputs;
-              inherit android-nixpkgs;
             };
             #home-manager.specialArgs = { inherit stylix; };
             home-manager.useGlobalPkgs = true;

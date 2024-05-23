@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}: 
+{
   imports = [
     inputs.nix-colors.homeManagerModules.default
     #inputs.android-nixpkgs.hmModule
@@ -31,6 +32,9 @@
     ripgrep
     just
 
+    nodePackages.pnpm
+    bun
+
     nodejs
 
     neofetch
@@ -41,6 +45,10 @@
 
     rubik
     vlc
+
+    (pkgs.writeScriptBin "atom" ''
+        ${inputs.nixvim.packages.${pkgs.system}.default}/bin/nvim
+    '')
   ];
 
   fonts.fontconfig.enable = true;
@@ -76,6 +84,12 @@
     userEmail = "yosephtuemay64@gmail.com";
   };
 
+  programs.direnv = {
+    enable = true; 
+    enableBashIntegration = true; 
+    nix-direnv.enable = true; 
+  };
+
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -84,13 +98,21 @@
       os = "sudo nixos-rebuild switch --flake ~/.config/nixos-config#nixos-test";
       hm = "home-manager switch --flake ~/.config/nixos-config/";
     };
+    bashrcExtra = ''
+flakify() {
+  if [ ! -e .envrc ]; then
+    echo "use flake" > .envrc
+    direnv allow
+  fi
+}
+    '';
   };
 
   programs.starship = {
     enable = true;
     settings = {
       add_newline = true;
-      format = "$username$hostname$directory$git_branch$git_state$nix_shell$git_status$cmd_duration$line_break$python$character";
+      format = "$username$hostname$directory$git_branch$git_state$python$nix_shell$git_status$cmd_duration$line_break$character";
     };
   };
 
