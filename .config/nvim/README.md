@@ -1,5 +1,0 @@
-# nvim_config
-
-```lua
- 
-```
