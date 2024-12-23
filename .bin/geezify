@@ -1,3 +1,0 @@
-#!/bin/sh
-
-wren /home/aldrich/Documents/workspace/wrenspace/src/github.com/jossephus/geezify/bin/convert.wren $1
