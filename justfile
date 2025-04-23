@@ -1,4 +1,6 @@
 
+wsl: 
+   home-manager switch --flake .#wsl --verbose 
 rebuild:
     sudo nixos-rebuild switch --flake ~/.config/nixos-config#aldrich-main -L
 
