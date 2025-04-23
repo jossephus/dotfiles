@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    ghostty = {
+      url = "git+ssh://git@github.com/ghostty-org/ghostty";
+    };
+
+
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
     home-manager = {
@@ -103,8 +108,26 @@
     homeConfigurations = {
       aldrich = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+
+        
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+
         modules = [
           ./home
+        ];
+      };
+      wsl = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+
+        modules = [
+          ./home/wsl.nix
         ];
       };
     };
