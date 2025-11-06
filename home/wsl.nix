@@ -18,6 +18,12 @@
     sqlite
     pkg-config
 
+    dive
+
+    lazygit
+
+    git
+    ripgrep
     just
 
     nix-output-monitor
@@ -27,6 +33,10 @@
     #mysql
     zip
     silicon
+
+    jq
+    ffmpeg
+    stylua
 
     asciinema
     sshfs
@@ -47,8 +57,14 @@
     devenv
 
     gh
+    go
     jnv
     ghc
+
+
+    tree-sitter
+    nil
+    nixd
 
     #zig
 
@@ -60,7 +76,7 @@
     #(pkgs.writeScriptBin "atom" ''
        #${inputs.nixvim.packages.${pkgs.system}.default}/bin/nvim
     #'')
-    
+
     #(pkgs.buildFHSUserEnv {
       #name = "zed";
       #targetPkgs = pkgs:
@@ -79,4 +95,3 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
-
