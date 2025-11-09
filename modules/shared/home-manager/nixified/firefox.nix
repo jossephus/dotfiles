@@ -1,11 +1,15 @@
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   #programs.firefox = {
-    #enable = true;
+  #enable = true;
 
-    #profiles.jossephus = {
-      #extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
-        #sidebery
-      #];
-    #};
+  #profiles.jossephus = {
+  #extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+  #sidebery
+  #];
+  #};
   #};
 }

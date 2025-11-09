@@ -1,5 +1,9 @@
-{config, lib, pkgs, ...}:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../modules/shared
   ];
@@ -16,7 +20,7 @@
     shopt -s checkjobs
 
     alias cd='z'
-    '';
+  '';
 
   programs.home-manager.enable = true;
   home.stateVersion = "25.05";

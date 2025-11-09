@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.neovim = {
     enable = true;
   };
@@ -8,9 +12,10 @@
     recursive = true;
   };
 
-  home.packages = with pkgs; lib.optionals pkgs.stdenv.isLinux [
-    nodePackages.volar
-  ];
+  home.packages = with pkgs;
+    lib.optionals pkgs.stdenv.isLinux [
+      nodePackages.volar
+    ];
 
   #xdg = {
   #enable = true;

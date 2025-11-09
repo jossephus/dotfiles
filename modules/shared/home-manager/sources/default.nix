@@ -3,7 +3,7 @@
   programs.bash.bashrcExtra = builtins.readFile ./bashrc;
 
   programs.starship.enable = true;
-  
+
   programs.zoxide.enable = true;
   programs.zoxide.enableBashIntegration = true;
 
@@ -24,12 +24,12 @@
     ".vim/optional.vim".source = ./.vim/optional.vim;
     ".vim/colors".source = ./.vim/colors;
     ".vim/bundle/Vundle.vim" = {
-        source = pkgs.fetchFromGitHub {
-          owner = "VundleVim";
-          repo = "Vundle.vim";
-          rev = "5548a1a937d4e72606520c7484cd384e6c76b565";
-          hash = "sha256-DnIqX2WxnOdWRDTsjXlkTPqKuXXFag5ky2UImG7X0FE=";
-        };
+      source = pkgs.fetchFromGitHub {
+        owner = "VundleVim";
+        repo = "Vundle.vim";
+        rev = "5548a1a937d4e72606520c7484cd384e6c76b565";
+        hash = "sha256-DnIqX2WxnOdWRDTsjXlkTPqKuXXFag5ky2UImG7X0FE=";
+      };
     };
     ".vim/plugin".source = ./.vim/plugin;
     ".vim/snippets".source = ./.vim/snippets;

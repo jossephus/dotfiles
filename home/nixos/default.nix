@@ -3,8 +3,7 @@
   pkgs,
   inputs,
   ...
-}: 
-{
+}: {
   imports = [
     inputs.nix-colors.homeManagerModules.default
     #inputs.android-nixpkgs.hmModule
@@ -47,7 +46,7 @@
     vlc
 
     (pkgs.writeScriptBin "atom" ''
-        ${inputs.nixvim.packages.${pkgs.system}.default}/bin/nvim
+      ${inputs.nixvim.packages.${pkgs.system}.default}/bin/nvim
     '')
   ];
 
@@ -57,18 +56,18 @@
   home.homeDirectory = "/home/aldrich";
 
   #android-sdk = {
-    #enable = true;
+  #enable = true;
 
-    #path = "${config.home.homeDirectory}/.local/share/android";
+  #path = "${config.home.homeDirectory}/.local/share/android";
 
-    #packages = sdk:
-      #with sdk; [
-        #build-tools-34-0-0
-        #cmdline-tools-latest
-        #emulator
-        #platforms-android-34
-        #sources-android-34
-      #];
+  #packages = sdk:
+  #with sdk; [
+  #build-tools-34-0-0
+  #cmdline-tools-latest
+  #emulator
+  #platforms-android-34
+  #sources-android-34
+  #];
   #};
 
   # set cursor size and dpi for 4k monitor
@@ -85,9 +84,9 @@
   };
 
   programs.direnv = {
-    enable = true; 
-    enableBashIntegration = true; 
-    nix-direnv.enable = true; 
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
 
   programs.bash = {
@@ -99,12 +98,12 @@
       hm = "home-manager switch --flake ~/.config/nixos-config/";
     };
     bashrcExtra = ''
-flakify() {
-  if [ ! -e .envrc ]; then
-    echo "use flake" > .envrc
-    direnv allow
-  fi
-}
+      flakify() {
+        if [ ! -e .envrc ]; then
+          echo "use flake" > .envrc
+          direnv allow
+        fi
+      }
     '';
   };
 
@@ -123,6 +122,6 @@ flakify() {
   home.sessionVariables = {
     NIX_LD_LBRARY_PATH = with pkgs;
       lib.makeLibraryPath [
-    ];
+      ];
   };
 }
