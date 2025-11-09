@@ -1,0 +1,16 @@
+[
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      ", t n": "pane::ActivateNextItem",
+      ", t p": "pane::ActivatePrevItem",
+      ", space": "search::Clear",
+      "[ [": "pane::ActivatePrevItem",
+      "{": "pane::ActivatePrevItem",
+      "] ]": "pane::ActivateNextItem",
+      "}": "pane::ActivateNextItem",
+      ", a": "pane::GoBack",
+      "g k": "editor::GoToDefinition"
+    }
+  }
+]

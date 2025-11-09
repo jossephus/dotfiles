@@ -1,0 +1,46 @@
+source ~/.bashrc.old
+source ~/.aliases.bashrc
+
+export PATH="$PATH:/Users/jossephus/.cargo/bin:/Users/jossephus/.local/share/bob/nvim-bin:$HOME/.volta/bin"
+echo "Hello World"
+
+# amp
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(starship init bash)"
+eval "$(zoxide init bash)"
+export VOLTA_HOME="$HOME/.volta/bin"
+
+# xh - 
+alias get="":q
+
+#export PATH="$PATH:~/.local/share/bob/nvim-bin/"
+#. "$HOME/.cargo/env"
+#export VOLTA_HOME="$HOME/.volta"
+#export PATH="$PATH:~/.bun/bin"
+
+
+#export PATH="$VOLTA_HOME/bin:$PATH"
+#export PATH="$PATH:~/.local/bin/"
+
+#eval "$(starship init bash)"
+#eval "$(zoxide init bash)"
+
+## pnpm
+export PNPM_HOME="/home/aldrich/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+#export OPENAI_API_KEY=sk-3099baa240f742a18bf7e6d209b0af90
+
+# opencode
+export PATH=/home/aldrich/.opencode/bin:$PATH
+#export BIOME_CONFIG_PATH="/home/aldrich/.config/biome/biome.json"
+export EDITOR="vim"

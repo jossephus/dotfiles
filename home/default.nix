@@ -123,6 +123,6 @@ flakify() {
   home.sessionVariables = {
     NIX_LD_LBRARY_PATH = with pkgs;
       lib.makeLibraryPath [
-      ];
+    ];
   };
 }

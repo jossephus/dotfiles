@@ -1,6 +1,4 @@
 {pkgs ? import<nixpkgs> {}, ...}: rec {
-  #dataflare = pkgs.callPackage ./apps/dataflare.nix {};
-  #musicpod = pkgs.callPackage ./apps/musicpod.nix {};
   curosr = pkgs.callPackage ./apps/cursor.nix {};
   wrapWine = pkgs.callPackage ./wrapWine.nix { };
   pot_player = pkgs.callPackage ./apps/pot_player.nix {

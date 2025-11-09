@@ -2,19 +2,23 @@
   description = "My Nixos Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    rust-overlay = {
+	      url = "github:oxalica/rust-overlay";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ghostty = {
-      url = "git+ssh://git@github.com/ghostty-org/ghostty";
+      url = "github:ghostty-org/ghostty";
     };
-
 
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
@@ -45,10 +49,10 @@
       #inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #stylix = {
-    #url = "github:danth/stylix";
-    #inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -56,6 +60,8 @@
     nixpkgs,
     home-manager,
     nixpkgs-unstable,
+    nix-darwin,
+    rust-overlay,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -70,7 +76,7 @@
         system = "x86_64-linux";
 
         modules = [
-          ./nixos/vm-configuration.nix
+          ./hosts/nixos/vm-configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = {inherit inputs;};
@@ -89,7 +95,7 @@
         specialArgs = {inherit inputs outputs; }; # this is the important part
 
         modules = [
-          ./nixos/main-configuration.nix
+          ./hosts/nixos/main-configuration.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -109,7 +115,6 @@
       aldrich = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        
         extraSpecialArgs = {
           inherit inputs;
         };
@@ -127,9 +132,27 @@
         };
 
         modules = [
-          ./home/wsl.nix
+          ./home/wsl
         ];
       };
+    };
+
+    darwinConfigurations."jossephus" = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit self; };
+      modules = [ 
+        ({ pkgs, ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default pkgs.ripgrep pkgs.orbstack];
+        })
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.backupFileExtension = "backup";
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.jossephus = import ./home/darwin;
+        }
+        ./hosts/darwin
+     ];
     };
   };
 }

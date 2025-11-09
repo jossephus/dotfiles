@@ -1,0 +1,32 @@
+[user]
+	email = jossephustuemay@gmail.com
+	name = jossephus
+[init]
+	defaultBranch = main
+
+[core]
+    pager = delta
+	  autocrlf = input
+    attributesfile = ~/.gitattributes
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+
+[merge]
+    conflictstyle = diff3
+
+[merge "mergiraf"]
+    name = mergiraf
+    driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+
+[diff]
+    colorMoved = default
+[alias]
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
