@@ -1,0 +1,41 @@
+return {
+  -- My subscription has ended and I dont think i will use it any time soon in nvim
+  --{
+  --'zbirenbaum/copilot.lua',
+  --event = "InsertEnter",
+  --cmd = "Copilot",
+  --config = function()
+  --require('copilot').setup({
+  --suggestion = {
+  --enabled = true,
+  --auto_trigger = true,
+  --keymap = {
+  --accept = "<S-RIGHT>",
+  --next = "<S-DOWN>",
+  --prev = "<S-UP>"
+  --}
+  --},
+  --panel = { enabled = true, auto_refresh = true },
+  --filetypes = { typescript = true },
+  --})
+  --end,
+  --},
+  --{
+  --'zbirenbaum/copilot-cmp',
+  --config = function()
+  --require('copilot_cmp').setup();
+  --end,
+  --},
+  --
+  --
+  -- supermaven in nvim? lets try this
+  --{
+  --"supermaven-inc/supermaven-nvim",
+  --config = function()
+  --require("supermaven-nvim").setup({
+  --accept_suggestion = "<TAB-RIGHT>",
+  --clear_suggestion = "<TAB-LEFT>",
+  --})
+  --end,
+  --},
+}
