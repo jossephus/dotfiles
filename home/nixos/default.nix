@@ -8,7 +8,7 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
     #inputs.android-nixpkgs.hmModule
-    ./modules
+    ../../modules/shared
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;

@@ -1,11 +1,17 @@
-{ self, pkgs, ... }: {
+{ self, pkgs, rust-overlay, ... }: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
+  
+  nixpkgs.overlays = [ rust-overlay.overlays.default ];
+  
   environment.systemPackages =
     [ 
       pkgs.vim
       pkgs.bashInteractive
       pkgs.mpv
+      pkgs.rust-bin.stable.latest.default
+      pkgs.ripgrep
+      pkgs.orbstack
     ];
 
   nix.enable = false;
