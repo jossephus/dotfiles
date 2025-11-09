@@ -1,6 +1,9 @@
 { config, pkgs, inputs, ... }:
-
 {
+  imports = [
+    ../../modules/shared
+  ];
+
   home.username = "aldrich";
   home.homeDirectory = "/home/aldrich";
 

@@ -32,11 +32,6 @@
 
     vim-nixpkgs-unstable.url = "github:nixos/nixpkgs/f597e7e9fcf37d8ed14a12835ede0a7d362314bd";
 
-    android-nixpkgs = {
-      url = "github:tadfisher/android-nixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix.url = "github:the-argus/spicetify-nix";
 
     firefox-addons = {
@@ -83,7 +78,7 @@
             #home-manager.specialArgs = { inherit stylix; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.aldrich = import ./home;
+            home-manager.users.aldrich = import ./home/nixos;
           }
           #stylix.nixosModules.stylix
         ];
@@ -105,7 +100,7 @@
             #home-manager.specialArgs = { inherit stylix; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.aldrich = import ./home;
+            home-manager.users.aldrich = import ./home/nixos;
           }
           #stylix.nixosModules.stylix
         ];
@@ -120,7 +115,7 @@
         };
 
         modules = [
-          ./home
+          ./home/nixos
         ];
       };
       wsl = home-manager.lib.homeManagerConfiguration {
@@ -138,14 +133,11 @@
     };
 
     darwinConfigurations."jossephus" = nix-darwin.lib.darwinSystem {
-      specialArgs = { inherit self; };
+      specialArgs = { inherit self rust-overlay; };
       modules = [ 
-        ({ pkgs, ... }: {
-            nixpkgs.overlays = [ rust-overlay.overlays.default ];
-            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default pkgs.ripgrep pkgs.orbstack];
-        })
         home-manager.darwinModules.home-manager
         {
+          home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.backupFileExtension = "backup";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

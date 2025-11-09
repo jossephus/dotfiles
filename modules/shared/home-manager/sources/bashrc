@@ -38,7 +38,6 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
-#export OPENAI_API_KEY=sk-3099baa240f742a18bf7e6d209b0af90
 
 # opencode
 export PATH=/home/aldrich/.opencode/bin:$PATH
