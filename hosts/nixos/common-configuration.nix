@@ -25,10 +25,10 @@
   };
 
   nix.extraOptions = ''
-  trusted-users = root aldrich
+    trusted-users = root aldrich
 
-  extra-substituters = https://nixpkgs-python.cachix.org
-  extra-trusted-public-keys = nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+    extra-substituters = https://nixpkgs-python.cachix.org
+    extra-trusted-public-keys = nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
 
   '';
 
@@ -132,7 +132,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
-     #outputs.overlays.modifications
+    #outputs.overlays.modifications
   ];
 
   # Allow insecure packages
@@ -153,7 +153,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    (pkgs.callPackage ../pkgs/apps/dataflare.nix {  })
+    (pkgs.callPackage ../pkgs/apps/dataflare.nix {})
     pkgs.wget
     pkgs.git
     pkgs.helix
@@ -166,7 +166,6 @@
     pkgs.unrar
     pkgs.zip
     pkgs.unzip
-
 
     pkgs.htop
 
@@ -221,7 +220,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
 
   # Enable docker
   virtualisation.docker.enable = true;

@@ -2,14 +2,14 @@
 # Note that the system trust store needs to have a specific verisign root certificate
 # installed. See nixos/features/kindle/default.nix in this repo for that bit, plus
 # a script to extract the decryption key from the installed app.
-
-{ pkgs
-, fetchurl
-, makeDesktopItem
-, symlinkJoin
-, wrapWine
-, ... }:
-let
+{
+  pkgs,
+  fetchurl,
+  makeDesktopItem,
+  symlinkJoin,
+  wrapWine,
+  ...
+}: let
   source = fetchurl {
     url = "https://mozib.io/downloads/dupeclear/DupeClear-2.0.0.0-setup.exe";
     sha256 = "sha256-Jt5kK8+FgSaT42IWwm79KMHkNffurSvl/yVDjJedqrk=";
@@ -40,7 +40,8 @@ let
       sha256 = "sha256-bP6CSJCGFmTcXEhNoqLTJfTZtEbFl2CBmi9GsKyZndY=";
     };
   };
-in symlinkJoin {
-  name = "dupeclear";
-  paths = [bin desktop];
-}
+in
+  symlinkJoin {
+    name = "dupeclear";
+    paths = [bin desktop];
+  }

@@ -1,5 +1,9 @@
-{ config, pkgs, inputs, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ../../modules/shared
   ];
@@ -10,7 +14,7 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   #programs.zed-editor = {
-    #enable = true;
+  #enable = true;
   #};
   #programs.ssh.enable = true;
 
@@ -64,7 +68,6 @@
     jnv
     ghc
 
-
     tree-sitter
     nil
     nixd
@@ -73,26 +76,24 @@
 
     inputs.ghostty.packages.x86_64-linux.default
 
-
     #zed-editor
 
     #(pkgs.writeScriptBin "atom" ''
-       #${inputs.nixvim.packages.${pkgs.system}.default}/bin/nvim
+    #${inputs.nixvim.packages.${pkgs.system}.default}/bin/nvim
     #'')
 
     #(pkgs.buildFHSUserEnv {
-      #name = "zed";
-      #targetPkgs = pkgs:
-        #with pkgs; [
-           #zed-editor
-        #];
-      #runScript = "zed";
-     #})
-
+    #name = "zed";
+    #targetPkgs = pkgs:
+    #with pkgs; [
+    #zed-editor
+    #];
+    #runScript = "zed";
+    #})
   ];
 
   home.sessionVariables = {
-     EDITOR = "vim";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.

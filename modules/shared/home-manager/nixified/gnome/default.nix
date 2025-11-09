@@ -1,5 +1,8 @@
-{pkgs, lib, ...}: 
 {
+  pkgs,
+  lib,
+  ...
+}: {
   # GNOME configuration - Linux only
   imports = lib.optionals pkgs.stdenv.isLinux [
     ./dconf.nix
@@ -7,11 +10,11 @@
 
   # enable dark mode for all gtk4 applications
   # https://nixos.wiki/wiki/GNOME#Dark_mode
-  home.packages = with pkgs; 
+  home.packages = with pkgs;
     lib.optionals pkgs.stdenv.isLinux [
-    #gnomeExtensions.dash2dock-lite
-    #gnomeExtensions.dash-to-dock
-  ];
+      #gnomeExtensions.dash2dock-lite
+      #gnomeExtensions.dash-to-dock
+    ];
 
   gtk = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;

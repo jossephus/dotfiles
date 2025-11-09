@@ -1,18 +1,22 @@
-{ self, pkgs, rust-overlay, ... }: {
+{
+  self,
+  pkgs,
+  rust-overlay,
+  ...
+}: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  
-  nixpkgs.overlays = [ rust-overlay.overlays.default ];
-  
-  environment.systemPackages =
-    [ 
-      pkgs.vim
-      pkgs.bashInteractive
-      pkgs.mpv
-      pkgs.rust-bin.stable.latest.default
-      pkgs.ripgrep
-      pkgs.orbstack
-    ];
+
+  nixpkgs.overlays = [rust-overlay.overlays.default];
+
+  environment.systemPackages = [
+    pkgs.vim
+    pkgs.bashInteractive
+    pkgs.mpv
+    pkgs.rust-bin.stable.latest.default
+    pkgs.ripgrep
+    pkgs.orbstack
+  ];
 
   nix.enable = false;
 
@@ -40,12 +44,11 @@
   nixpkgs.config.allowUnfree = true;
 
   networking = {
-    computerName = "jossephus";    # Shown in System Settings → Sharing
-    hostName = "jossephus";        # Used for terminal prompt and Bonjour
-    localHostName = "jossephus";   # Used for .local network name
+    computerName = "jossephus"; # Shown in System Settings → Sharing
+    hostName = "jossephus"; # Used for terminal prompt and Bonjour
+    localHostName = "jossephus"; # Used for .local network name
   };
 
   system.defaults.dock.autohide = true;
   #system.defaults.NSGlobalDomain._HIHideMenuBar = false;
-
 }

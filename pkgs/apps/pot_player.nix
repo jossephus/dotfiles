@@ -1,11 +1,11 @@
-
-{ pkgs
-, fetchurl
-, makeDesktopItem
-, symlinkJoin
-, wrapWine
-, ... }:
-let
+{
+  pkgs,
+  fetchurl,
+  makeDesktopItem,
+  symlinkJoin,
+  wrapWine,
+  ...
+}: let
   source = fetchurl {
     url = "https://gsf-fl.softonic.com/810/41f/dac1828c24b9854efbe871c8cf13e83baa/PotPlayerSetup.exe?Expires=1715963943&Signature=8fb9a9af73cc86f5df3e950e136562c0c450539d&url=https://potplayer.en.softonic.com&Filename=PotPlayerSetup.exe";
     sha256 = "sha256-ED7hgcBqqbjZg/CgZudVetDt5ry2qB/GgG/DhdEmH1A=";
@@ -36,7 +36,8 @@ let
       sha256 = "sha256-kcRw+0yVORXdoaa3fRw0Qcbxa6fG3PgVoxwFlcx2he4=";
     };
   };
-in symlinkJoin {
-  name = "Pot-Player";
-  paths = [bin desktop];
-}
+in
+  symlinkJoin {
+    name = "Pot-Player";
+    paths = [bin desktop];
+  }
