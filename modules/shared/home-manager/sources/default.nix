@@ -39,5 +39,6 @@
   home.packages = with pkgs; [
     delta
     mergiraf
+    xh
   ];
 }
