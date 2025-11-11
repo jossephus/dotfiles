@@ -1,0 +1,6 @@
+# Nix is the primary language
+*.nix linguist-language=Nix
+
+# Mark generated files
+*.lock linguist-generated=true
+flake.lock linguist-generated=true
