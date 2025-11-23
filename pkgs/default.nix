@@ -7,6 +7,7 @@
   dupeclear = pkgs.callPackage ./apps/dupe-clear.nix {
     inherit wrapWine;
   };
+  antigravity = pkgs.callPackage ./apps/antigravity.nix {};
 
   vtsls = pkgs.buildNpmPackage rec {
     name = "@vtsls/language-server";

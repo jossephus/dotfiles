@@ -63,8 +63,15 @@
     pkgs = import nixpkgs {
       system = "x86_64-linux";
     };
+    pkgs-darwin = import nixpkgs {
+      system = "aarch64-darwin";
+      config.allowUnfree = true;
+    };
   in {
     overlays = import ./overlays { inherit inputs; };
+
+    packages.aarch64-darwin = import ./pkgs { pkgs = pkgs-darwin; };
+    packages.x86_64-linux = import ./pkgs { inherit pkgs; };
 
     nixosConfigurations = {
       "aldrich-vm" = nixpkgs.lib.nixosSystem {
@@ -133,8 +140,9 @@
     };
 
     darwinConfigurations."jossephus" = nix-darwin.lib.darwinSystem {
-      specialArgs = { inherit self rust-overlay; };
+      specialArgs = { inherit self rust-overlay outputs; };
       modules = [ 
+        { nixpkgs.overlays = [outputs.overlays.custom-packages rust-overlay.overlays.default]; }
         home-manager.darwinModules.home-manager
         {
           home-manager.extraSpecialArgs = { inherit inputs; };

@@ -3,6 +3,7 @@ source ~/.aliases.bashrc
 
 export PATH="$PATH:/Users/jossephus/.cargo/bin:/Users/jossephus/.local/share/bob/nvim-bin:$HOME/.volta/bin"
 echo "Hello World"
+export PATH=/Users/jossephus/.opencode/bin:$PATH
 
 # amp
 export PATH="$HOME/.local/bin:$PATH"

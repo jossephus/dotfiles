@@ -40,5 +40,6 @@
     delta
     mergiraf
     xh
+    biome
   ];
 }
