@@ -4,9 +4,8 @@
   pkgs,
   inputs,
   ...
-}: 
-let
-  setWallpaperScript = import ./wallpaper.nix { inherit pkgs; };
+}: let
+  setWallpaperScript = import ./wallpaper.nix {inherit pkgs;};
 in {
   imports = [
     ../../modules/shared
@@ -14,7 +13,6 @@ in {
 
   home.username = "jossephus";
   home.homeDirectory = lib.mkForce "/Users/jossephus";
-
 
   programs.bash.enable = true;
   programs.bash.initExtra = ''
@@ -31,9 +29,9 @@ in {
   home.stateVersion = "25.05";
 
   home.activation = {
-   "setWallpaper" = lib.hm.dag.entryAfter ["revealHomeLibraryDirectory"] ''
+    "setWallpaper" = lib.hm.dag.entryAfter ["revealHomeLibraryDirectory"] ''
       echo "[+] Setting wallpaper"
       ${setWallpaperScript}/bin/set-wallpaper-script
-  '';
+    '';
   };
 }

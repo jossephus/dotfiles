@@ -20,7 +20,6 @@
   };
 in
   appimageTools.wrapType2 {
-    # or wrapType1
     name = "cursor";
     src = pkgs.fetchurl {
       url = "https://downloader.cursor.sh/linux/appImage/x64";
@@ -29,8 +28,16 @@ in
     extraPkgs = pkgs: with pkgs; [];
 
     extraInstallCommands = ''
-      #mkdir -p $out/share/applications
-      #install -m 0644 -D "${desktopItem}/share/applications/curosr.desktop" \
-         #"$out/share/applications/dataflare.desktop"
+      mkdir -p $out/share/applications
+      install -m 0644 -D "${desktopItem}/share/applications/cursor.desktop" \
+         "$out/share/applications/cursor.desktop"
     '';
+
+    meta = with pkgs.lib; {
+      description = "Cursor - AI-powered code editor";
+      homepage = "https://cursor.sh";
+      license = licenses.unfree;
+      platforms = ["x86_64-linux"];
+      sourceProvenance = with sourceTypes; [binaryNativeCode];
+    };
   }

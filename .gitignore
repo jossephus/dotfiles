@@ -1,1 +1,7 @@
 result
+.direnv/
+*.swp
+*.swo
+*~
+*.bak
+*.tmp

@@ -3,12 +3,9 @@
   pkgs,
   rust-overlay,
   ...
-}: 
-{
+}: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-
-
 
   environment.systemPackages = [
     pkgs.vim
@@ -54,7 +51,6 @@
   };
 
   system.defaults.dock.autohide = true;
-
 
   #system.defaults.NSGlobalDomain._HIHideMenuBar = false;
 }

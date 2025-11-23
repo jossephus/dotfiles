@@ -41,5 +41,7 @@
     mergiraf
     xh
     biome
+    fd
+    findutils
   ];
 }
