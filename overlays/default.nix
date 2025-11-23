@@ -1,5 +1,6 @@
 {inputs}: {
-  # this is not mine, I was exploring how overlays work, but I dont know where I copied it from.
+  custom-packages = final: prev: (import ../pkgs { pkgs = prev; });
+
   modifications = final: prev: {
     johannes = final.buildGoModule rec {
       pname = "johannes";

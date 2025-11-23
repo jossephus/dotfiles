@@ -3,11 +3,12 @@
   pkgs,
   rust-overlay,
   ...
-}: {
+}: 
+{
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
 
-  nixpkgs.overlays = [rust-overlay.overlays.default];
+
 
   environment.systemPackages = [
     pkgs.vim
@@ -16,6 +17,9 @@
     pkgs.rust-bin.stable.latest.default
     pkgs.ripgrep
     pkgs.orbstack
+    pkgs.blueutil
+
+    pkgs.antigravity
   ];
 
   nix.enable = false;
@@ -50,5 +54,7 @@
   };
 
   system.defaults.dock.autohide = true;
+
+
   #system.defaults.NSGlobalDomain._HIHideMenuBar = false;
 }
