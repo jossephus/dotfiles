@@ -44,4 +44,11 @@ in
   symlinkJoin {
     name = "dupeclear";
     paths = [bin desktop];
+
+    meta = with pkgs.lib; {
+      description = "Dupe Clear - Duplicate file finder and remover";
+      homepage = "https://mozib.io/dupe-clear";
+      license = licenses.unfree;
+      platforms = ["x86_64-linux"];
+    };
   }

@@ -1,9 +1,9 @@
 {inputs}: {
-  custom-packages = final: prev: (import ../pkgs { pkgs = prev; });
+  custom-packages = final: prev: (import ../pkgs {pkgs = prev;});
 
   modifications = final: prev: {
-    johannes = final.buildGoModule rec {
-      pname = "johannes";
+    discordo = final.buildGoModule rec {
+      pname = "discordo";
       version = "unstable-2024-03-07";
 
       src = final.fetchFromGitHub {
