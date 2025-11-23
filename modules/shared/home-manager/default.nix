@@ -3,7 +3,7 @@
 # - sources: Static dotfiles with minimal Nix wrapping
 {inputs, ...}: {
   imports = [
-    # ./nixified
+     #./nixified
     ./sources
   ];
 }
