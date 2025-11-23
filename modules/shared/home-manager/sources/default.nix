@@ -45,3 +45,12 @@
     findutils
   ];
 }
+
+
+  #programs.vim = {
+    #enable = true;
+    #plugins = [
+      #pkgs.vimPlugins.Vundle-vim
+    #];
+    #extraConfig = builtins.readFile ./.vimrc;
+  #};

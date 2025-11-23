@@ -8,13 +8,11 @@
   imports = [
     #./gnome  # Linux only
     ./zoxide.nix
-    ./nvim
-    ./vim
-    ./vscode.nix
+    #./vscode.nix
     ./zathura.nix
     #./spicetify.nix
     #./firefox.nix
-    ./alacritty
+    #./alacritty
     #./android.nix
   ];
 
