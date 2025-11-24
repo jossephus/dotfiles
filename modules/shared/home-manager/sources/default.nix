@@ -36,14 +36,6 @@
     ".vim/plugins.vim".source = ./.vim/plugins.vim;
   };
 
-  home.packages = with pkgs; [
-    delta
-    mergiraf
-    xh
-    biome
-    fd
-    findutils
-  ];
 }
 
 

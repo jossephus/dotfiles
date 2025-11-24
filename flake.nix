@@ -29,8 +29,6 @@
     # nix-colors
     nix-colors.url = "github:misterio77/nix-colors";
 
-    vim-nixpkgs-unstable.url = "github:nixos/nixpkgs/f597e7e9fcf37d8ed14a12835ede0a7d362314bd";
-
     spicetify-nix.url = "github:the-argus/spicetify-nix";
 
     firefox-addons = {
@@ -53,13 +51,16 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    pkgs = import nixpkgs {
-      system = "x86_64-linux";
-    };
-    pkgs-darwin = import nixpkgs {
-      system = "aarch64-darwin";
+    
+    mkPkgs = system: import nixpkgs {
+      inherit system;
       config.allowUnfree = true;
     };
+    
+    pkgs = mkPkgs "x86_64-linux";
+    pkgs-darwin = mkPkgs "aarch64-darwin";
+    
+
   in {
     overlays = import ./overlays {inherit inputs;};
 
@@ -74,9 +75,9 @@
           ./hosts/nixos/vm-configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.aldrich = import ./home/nixos;
           }
         ];
@@ -91,9 +92,9 @@
           ./hosts/nixos/main-configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.aldrich = import ./home/nixos;
           }
         ];

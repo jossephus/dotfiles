@@ -36,8 +36,6 @@
 
     nodejs
 
-    neofetch
-
     nix-output-monitor
 
     typst
