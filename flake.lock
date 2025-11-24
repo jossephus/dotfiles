@@ -1079,8 +1079,7 @@
         "nixpkgs": "nixpkgs_6",
         "nixvim": "nixvim",
         "rust-overlay": "rust-overlay_2",
-        "spicetify-nix": "spicetify-nix",
-        "vim-nixpkgs-unstable": "vim-nixpkgs-unstable"
+        "spicetify-nix": "spicetify-nix"
       }
     },
     "rust-overlay": {
@@ -1237,22 +1236,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "vim-nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1655496630,
-        "narHash": "sha256-GZVgHf8Lx9wPcJOkVN8Cw2WkzVsNsV0L86geKA+E6dA=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "f597e7e9fcf37d8ed14a12835ede0a7d362314bd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "f597e7e9fcf37d8ed14a12835ede0a7d362314bd",
         "type": "github"
       }
     },
