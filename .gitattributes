@@ -4,3 +4,7 @@
 # Mark generated files
 *.lock linguist-generated=true
 flake.lock linguist-generated=true
+
+# Ignore JSON and Vimscript in GitHub stats
+*.json linguist-detectable=false
+*.vim linguist-detectable=false
