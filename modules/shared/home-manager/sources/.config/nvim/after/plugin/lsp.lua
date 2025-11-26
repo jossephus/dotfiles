@@ -9,7 +9,6 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   "lua_ls",
   "vtsls",
-  "rust_analyzer",
   "tailwindcss",
 })
 
@@ -105,22 +104,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --})
 
 lspconfig.rust_analyzer.setup({
-  tools = {
-    --on_initialized = function()
-    --print("Hello World");
-    --ih.set_all()
-    --end,
-    inlay_hints = {
-      auto = false,
-      --show_parameter_hints = false,
-      --parameter_hints_prefix = "",
-      --other_hints_prefix = "",
-    },
-    formatting = {
-      enable = true,
-      enable_auto_format_on_sae = true,
-    },
-  },
+  on_attach = function(client, bufnr)
+    local opts = { buffer = bufnr, remap = false }
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+    vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+  end,
 })
 
 local cmp = require("cmp")
@@ -197,6 +193,7 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
+  lsp.default_keymaps({ buffer = bufnr })
   local opts = { buffer = bufnr, remap = false }
 
   if client.server_capabilities.documentSymbolProvider then

@@ -12,6 +12,7 @@
     pkgs.bashInteractive
     pkgs.mpv
     pkgs.rust-bin.stable.latest.default
+    pkgs.rust-analyzer
     pkgs.ripgrep
     pkgs.orbstack
     pkgs.blueutil
