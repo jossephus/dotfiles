@@ -74,6 +74,13 @@ lspconfig.lua_ls.setup({
   },
 })
 
+-- Set up capabilities for LSP
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if has_cmp then
+  capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
+end
+
 vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
 vim.api.nvim_create_autocmd("LspAttach", {
   group = "LspAttach_inlayhints",
@@ -104,6 +111,30 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --})
 
 lspconfig.rust_analyzer.setup({
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      completion = {
+        autoself = {
+          enable = true,
+        },
+        addCallParentheses = true,
+        addCallArgumentSnippets = true,
+        postfix = {
+          enable = true,
+        },
+      },
+      imports = {
+        granularity = {
+          group = "module",
+        },
+        prefix = "self",
+      },
+      cargo = {
+        loadOutDirsFromCheck = true,
+      },
+    },
+  },
   on_attach = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
