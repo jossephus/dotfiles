@@ -57,6 +57,16 @@
 
   system.defaults.dock.autohide = true;
 
+  system.defaults.finder = {
+    _FXShowPosixPathInTitle = false; # show full path on finder title.
+    ShowPathbar = true; # show full path on bottom bar.
+    _FXSortFoldersFirst = true; # when sorted, show me folders first, then files.
+    FXDefaultSearchScope = "SCcf"; # search should be scoped to the current directory, ffs
+    FXPreferredViewStyle = "clmv"; 
+    QuitMenuItem = true; # apparently, finder can be quit lol
+    ShowStatusBar = true;
+  };
+
   security.pam.services.sudo_local = {
     enable = true; 
     touchIdAuth = true;
