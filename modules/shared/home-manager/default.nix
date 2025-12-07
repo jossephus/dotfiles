@@ -14,5 +14,7 @@
     biome
     fd
     findutils
+    ffmpeg 
+    yt-dlp
   ];
 }
