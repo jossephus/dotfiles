@@ -123,6 +123,9 @@ lspconfig.rust_analyzer.setup({
         postfix = {
           enable = true,
         },
+        fullFunctionSignatures = {
+          enable = true,
+        },
       },
       imports = {
         granularity = {
@@ -132,6 +135,9 @@ lspconfig.rust_analyzer.setup({
       },
       cargo = {
         loadOutDirsFromCheck = true,
+      },
+      callInfo = {
+        enable = true,
       },
     },
   },
@@ -172,17 +178,27 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 cmp.setup({
-  formatting = lspkind.cmp_format({
-    mode = "symbol_text",
-    menu = {
-      buffer = "[Buffer]",
-      nvim_lsp = "[LSP]",
-      luasnip = "[LuaSnip]",
-      nvim_lua = "[Lua]",
-      latex_symbols = "[Latex]",
-      copilot = "[Copilot]",
-    },
-  }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      max_width = 50,
+      menu = {
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[Latex]",
+        copilot = "[Copilot]",
+      },
+      before = function(entry, vim_item)
+        -- Show source for LSP completions
+        if entry.source.name == "nvim_lsp" then
+          vim_item.menu = entry.completion_item.detail or vim_item.menu
+        end
+        return vim_item
+      end,
+    }),
+  },
   window = {
     completion = cmp.config.window.bordered({
       winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:Search",

@@ -9,10 +9,14 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # programming languages i want to have system wide
+    #
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zig-overlay.url = "github:mitchellh/zig-overlay";
+
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
@@ -48,6 +52,7 @@
     home-manager,
     nix-darwin,
     rust-overlay,
+    zig-overlay,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -128,7 +133,13 @@
     darwinConfigurations."jossephus" = nix-darwin.lib.darwinSystem {
       specialArgs = {inherit self rust-overlay outputs;};
       modules = [
-        {nixpkgs.overlays = [outputs.overlays.custom-packages rust-overlay.overlays.default];}
+        {nixpkgs.overlays = [
+          outputs.overlays.custom-packages 
+          rust-overlay.overlays.default 
+          (final: prev: {
+            zigpkgs = zig-overlay.packages."aarch64-darwin";
+          })
+        ];}
         home-manager.darwinModules.home-manager
         {
           home-manager.extraSpecialArgs = {inherit inputs;};

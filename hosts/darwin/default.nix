@@ -2,6 +2,7 @@
   self,
   pkgs,
   rust-overlay,
+  zig-overlay,
   ...
 }: {
   # List packages installed in system profile. To search by name, run:
@@ -12,12 +13,15 @@
     pkgs.bashInteractive
     pkgs.mpv
     pkgs.rust-bin.stable.latest.default
+    pkgs.zigpkgs."0.15.2"
+
     pkgs.rust-analyzer
     pkgs.ripgrep
     pkgs.orbstack
     pkgs.blueutil
 
     pkgs.antigravity
+    #pkgs.autoraise
   ];
 
   nix.enable = false;
