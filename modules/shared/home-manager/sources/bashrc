@@ -44,3 +44,8 @@ export PATH=$BUN_INSTALL/bin:$PATH
 export PATH=/home/aldrich/.opencode/bin:$PATH
 #export BIOME_CONFIG_PATH="/home/aldrich/.config/biome/biome.json"
 export EDITOR="vim"
+
+#if [[ -z "$PRISE" ]]; then
+  #export PRISE=1
+  #exec prise
+#fi

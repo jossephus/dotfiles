@@ -99,6 +99,7 @@
   users.users.aldrich = {
     isNormalUser = true;
     description = "aldrich";
+    shell = pkgs.bashInteractive;
     extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       firefox

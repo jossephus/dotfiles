@@ -16,5 +16,6 @@
     findutils
     ffmpeg 
     yt-dlp
+    glab
   ];
 }

@@ -21,7 +21,8 @@
     pkgs.blueutil
 
     pkgs.antigravity
-    #pkgs.autoraise
+    pkgs.losslesscut-bin
+    #pkgs.autoraisea
   ];
 
   nix.enable = false;
@@ -40,7 +41,13 @@
   system.stateVersion = 6;
 
   # Set default shell to bash
-  users.users.jossephus.shell = pkgs.bash;
+  users.users.jossephus.shell = "${pkgs.bashInteractive}/bin/bash";
+  
+  # Add nix bash to valid shells
+  environment.shells = [ pkgs.bashInteractive ];
+  
+  # Ensure shell is properly set
+  programs.bash.enable = true;
 
   # Primary user for system-wide settings
   system.primaryUser = "jossephus";
