@@ -1,0 +1,9 @@
+command = /etc/profiles/per-user/jossephus/bin/bash
+keybind = cmd+shift+n=new_window
+shell-integration = none
+
+theme = "GitHub Dark Colorblind"
+window-decoration = none
+macos-non-native-fullscreen = padded-notch
+maximize = true
+# working-directory = current

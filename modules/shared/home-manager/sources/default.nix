@@ -13,11 +13,12 @@
     ".aliases.bashrc".source = ./aliases.bashrc;
     ".bashrc.old".source = ./bashrc.old;
     ".config/starship.toml".source = ./starship.toml;
+    #".config/ghostty/config".source = ./config/ghostty/config;
     ".gitconfig".source = ./gitconfig;
     ".gitattributes".source = ./gitattributes;
 
     # nvim
-    ".config/nvim".source = ./.config/nvim;
+    ".config/nvim".source = ./config/nvim;
 
     # vim stuff
     ".vimrc".source = ./vimrc;
