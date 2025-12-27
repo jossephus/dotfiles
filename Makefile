@@ -1,5 +1,4 @@
 darwin:
-	git add --all # nix doesnt allow us to build with out committing first
 	sudo darwin-rebuild switch --flake .
 
 wsl: 
