@@ -8,5 +8,5 @@
     inherit wrapWine;
   };
   antigravity = pkgs.callPackage ./apps/antigravity.nix {};
-  livekit-cli = pkgs.callPackage ./apps/livekit-cli.nix {};
+  livekit-cli = pkgs.callPackage ./clis/livekit-cli.nix {};
 }
