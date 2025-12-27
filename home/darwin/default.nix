@@ -34,4 +34,14 @@ in {
       ${setWallpaperScript}/bin/set-wallpaper-script
     '';
   };
+
+programs.homebrew = {
+  enable = true;
+  onActivation.autoUpdate = false;
+  brews = [
+    "livekit-cli"
+  ];
+};
+
+
 }
