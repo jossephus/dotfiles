@@ -19,6 +19,8 @@
     yt-dlp
     glab
     autossh
+
+    alejandra
   ];
 
   programs.livekit-cli = {
