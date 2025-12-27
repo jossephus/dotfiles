@@ -2,7 +2,6 @@ source ~/.bashrc.old
 source ~/.aliases.bashrc
 
 export PATH="$PATH:/Users/jossephus/.cargo/bin:/Users/jossephus/.local/share/bob/nvim-bin:$HOME/.volta/bin"
-echo "Hello World"
 export PATH=/Users/jossephus/.opencode/bin:$PATH
 
 # amp
@@ -45,7 +44,9 @@ export PATH=/home/aldrich/.opencode/bin:$PATH
 #export BIOME_CONFIG_PATH="/home/aldrich/.config/biome/biome.json"
 export EDITOR="vim"
 
-#if [[ -z "$PRISE" ]]; then
-  #export PRISE=1
-  #exec prise
-#fi
+if [[ -z "$PRISE" \
+   && -z "$SKIP_PRISE" \
+   && "$TERM_PROGRAM" == "ghostty" ]]; then
+  export PRISE=1
+  exec prise
+fi

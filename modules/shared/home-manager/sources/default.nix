@@ -37,6 +37,11 @@
     ".vim/plugins.vim".source = ./.vim/plugins.vim;
   };
 
+  programs.atuin = {
+    enable = true;
+    enableBashIntegration = false;
+  }; 
+
 }
 
 

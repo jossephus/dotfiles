@@ -1,5 +1,6 @@
 command = /etc/profiles/per-user/jossephus/bin/bash
 keybind = cmd+shift+n=new_window
+keybind = cmd+shift+z=new_window:env=SKIP_PRISE=1
 shell-integration = none
 
 theme = "GitHub Dark Colorblind"

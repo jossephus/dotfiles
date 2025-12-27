@@ -17,5 +17,6 @@
     ffmpeg 
     yt-dlp
     glab
+    autossh
   ];
 }
