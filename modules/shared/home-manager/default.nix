@@ -18,5 +18,6 @@
     yt-dlp
     glab
     autossh
+    livekit-cli
   ];
 }
