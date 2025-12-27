@@ -5,6 +5,7 @@
   imports = [
      #./nixified
     ./sources
+    ./modules
   ];
 
   home.packages = with pkgs; [
@@ -18,6 +19,12 @@
     yt-dlp
     glab
     autossh
-    livekit-cli
   ];
+
+  programs.livekit-cli = {
+    enable = true;
+    version = "2.12.8";
+    hash = "sha256-izJJXwxWS0BRh9xEkv/KpwSTEagG33T1QcwulNIK5rc=";
+    vendorHash = "sha256-sZgFfh0e32oXfqWKE8l93P9ZmQsqDgU8sLuvBze0DS0=";
+  };
 }
