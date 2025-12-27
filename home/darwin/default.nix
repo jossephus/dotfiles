@@ -35,10 +35,4 @@ in {
     '';
   };
 
-programs.homebrew = {
-  enable = true;
-  onActivation.autoUpdate = false;
-};
-
-
 }
