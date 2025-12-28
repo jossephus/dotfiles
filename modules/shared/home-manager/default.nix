@@ -3,6 +3,7 @@
 # - sources: Static dotfiles with minimal Nix wrapping
 {
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -26,6 +27,11 @@
 
     alejandra
     cachix
+    helix
+    nurl
+    ripgrep
+    fzf
+    bat
   ];
 
   programs.livekit-cli = {
