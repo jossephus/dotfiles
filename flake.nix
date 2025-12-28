@@ -9,18 +9,19 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
     # programming languages i want to have system wide
-    #
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zig-overlay.url = "github:mitchellh/zig-overlay";
 
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
+    ghostty.url = "github:ghostty-org/ghostty";
 
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
@@ -42,114 +43,12 @@
 
     nixvim = {
       url = "github:jossephus/corrado";
-      #inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nix-darwin,
-    rust-overlay,
-    zig-overlay,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    
-    mkPkgs = system: import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-darwin"];
+      imports = [./flake];
     };
-    
-    pkgs = mkPkgs "x86_64-linux";
-    pkgs-darwin = mkPkgs "aarch64-darwin";
-    
-
-  in {
-    overlays = import ./overlays {inherit inputs;};
-
-    packages.aarch64-darwin = import ./pkgs {pkgs = pkgs-darwin;};
-    packages.x86_64-linux = import ./pkgs {inherit pkgs;};
-
-    nixosConfigurations = {
-      "aldrich-vm" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        modules = [
-          ./hosts/nixos/vm-configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.aldrich = import ./home/nixos;
-          }
-        ];
-      };
-
-      "aldrich-main" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        specialArgs = {inherit inputs outputs;};
-
-        modules = [
-          ./hosts/nixos/main-configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.aldrich = import ./home/nixos;
-          }
-        ];
-      };
-    };
-    homeConfigurations = {
-      aldrich = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-
-        modules = [
-          ./home/nixos
-        ];
-      };
-      wsl = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-
-        modules = [
-          ./home/wsl
-        ];
-      };
-    };
-
-    darwinConfigurations."jossephus" = nix-darwin.lib.darwinSystem {
-      specialArgs = {inherit self rust-overlay outputs;};
-      modules = [
-        {nixpkgs.overlays = [
-          outputs.overlays.custom-packages 
-          rust-overlay.overlays.default 
-          (final: prev: {
-            zigpkgs = zig-overlay.packages."aarch64-darwin";
-          })
-        ];}
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.extraSpecialArgs = {inherit inputs;};
-          home-manager.backupFileExtension = "backup";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jossephus = import ./home/darwin;
-        }
-        ./hosts/darwin
-      ];
-    };
-  };
 }
