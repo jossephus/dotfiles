@@ -37,4 +37,8 @@
   programs.livekit-cli = {
     enable = true;
   };
+
+  programs.prise = {
+    enable = false;
+  };
 }
