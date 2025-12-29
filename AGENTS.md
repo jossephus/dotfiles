@@ -43,9 +43,30 @@ nixpkgs-fmt --check .  # Check Nix formatting
 
 - `hosts/`: System-specific configs (darwin/, nixos/)
 - `modules/`: Shared modules and configurations
+  - `shared/home-manager/modules/`: Home-manager feature modules (one file per feature, e.g., `livekit.nix`)
 - `home/`: Home-manager configurations (darwin/, nixos/, wsl/)
 - `pkgs/`: Custom package definitions
+  - `apps/`: GUI applications
+  - `clis/`: Command-line tools
 - `overlays/`: Nixpkgs overlays
+
+### Adding a New CLI Tool or Package
+
+1. Create package in `pkgs/clis/tool-name.nix` (or `pkgs/apps/` for GUI apps)
+2. Add to `pkgs/default.nix`: `tool-name = pkgs.callPackage ./clis/tool-name.nix {};`
+3. If it should be configurable across systems, create a module in `modules/shared/home-manager/modules/tool-name.nix`
+4. Module should expose `options.programs.tool-name` with `enable`, `version`, and any hash options
+5. Add module to `modules/shared/home-manager/modules/default.nix`
+6. Enable in target config: `programs.tool-name.enable = true;`
+
+Example structure for livekit-cli:
+```
+pkgs/clis/livekit-cli.nix           # Package definition with version/hash parameters
+modules/shared/home-manager/
+  └── modules/
+      ├── default.nix               # Imports all feature modules
+      └── livekit.nix               # Configuration module with options
+```
 
 ## Conventions
 
