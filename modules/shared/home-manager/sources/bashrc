@@ -19,7 +19,7 @@ alias get="":q
 #export PATH="$PATH:~/.bun/bin"
 
 
-#export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="$VOLTA_HOME/bin:$PATH"
 #export PATH="$PATH:~/.local/bin/"
 
 #eval "$(starship init bash)"

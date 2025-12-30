@@ -20,6 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zig-overlay.url = "github:mitchellh/zig-overlay";
+    zlsPkg.url = "github:zigtools/zls";
 
     ghostty.url = "github:ghostty-org/ghostty";
 

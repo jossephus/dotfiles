@@ -39,6 +39,6 @@
   };
 
   programs.prise = {
-    enable = false;
+    enable = true;
   };
 }

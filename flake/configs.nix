@@ -39,7 +39,7 @@
     };
 
     darwinConfigurations."jossephus" = inputs.nix-darwin.lib.darwinSystem {
-      specialArgs = {inherit self inputs;};
+      specialArgs = {inherit self inputs; zlsPkg = inputs.zlsPkg;};
       modules = [
         {
           nixpkgs.overlays = [

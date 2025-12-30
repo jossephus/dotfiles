@@ -3,6 +3,7 @@
   pkgs,
   rust-overlay,
   zig-overlay,
+  zlsPkg,
   ...
 }: {
   # List packages installed in system profile. To search by name, run:
@@ -19,6 +20,8 @@
     pkgs.ripgrep
     pkgs.orbstack
     pkgs.blueutil
+
+    zlsPkg.packages.aarch64-darwin.default
 
     pkgs.antigravity
     pkgs.losslesscut-bin
