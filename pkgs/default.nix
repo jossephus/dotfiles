@@ -9,4 +9,5 @@
   };
   antigravity = pkgs.callPackage ./apps/antigravity.nix {};
   livekit-cli = pkgs.callPackage ./clis/livekit-cli.nix {};
+  zigdoc = pkgs.callPackage ./clis/zigdoc.nix {};
 }

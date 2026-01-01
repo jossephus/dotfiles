@@ -41,4 +41,8 @@
   programs.prise = {
     enable = true;
   };
+
+  programs.zigdoc = {
+    enable = true;
+  };
 }
