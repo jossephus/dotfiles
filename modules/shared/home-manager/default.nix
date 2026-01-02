@@ -21,15 +21,7 @@
     fd
     findutils
     ffmpeg
-     (pkgs.yt-dlp.overridePythonAttrs (old: {
-       version = "2025.12.08";
-       src = pkgs.fetchFromGitHub {
-         owner = "yt-dlp";
-         repo = "yt-dlp";
-         rev = "2025.12.08";
-         sha256 = "1s4gbf49y6mpnfqy7n0lz2klfs9q1cbzcrg9mp353bl2zw68qknb";
-       };
-     }))
+    yt-dlp
     glab
     autossh
 
