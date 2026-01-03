@@ -15,6 +15,7 @@
 
   home.packages = with pkgs; [
     delta
+    lumen
     mergiraf
     xh
     biome
