@@ -11,4 +11,5 @@
   livekit-cli = pkgs.callPackage ./clis/livekit-cli.nix {};
   lumen = pkgs.callPackage ./clis/lumen.nix {};
   zigdoc = pkgs.callPackage ./clis/zigdoc.nix {};
+  anyzig = pkgs.callPackage ./clis/zvm.nix {};
 }

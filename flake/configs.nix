@@ -2,7 +2,11 @@
   inputs,
   self,
   ...
-}: {
+}:
+let
+  dotfilesConfig = import ../config.nix;
+in
+{
   flake = {
     nixosConfigurations = {
       "aldrich-vm" = inputs.nixpkgs.lib.nixosSystem {
@@ -14,7 +18,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {inherit inputs dotfilesConfig;};
             home-manager.users.aldrich = import ../home/nixos;
           }
         ];
@@ -31,7 +35,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {inherit inputs dotfilesConfig;};
             home-manager.users.aldrich = import ../home/nixos;
           }
         ];
@@ -52,7 +56,7 @@
         }
         inputs.home-manager.darwinModules.home-manager
         {
-          home-manager.extraSpecialArgs = {inherit inputs;};
+          home-manager.extraSpecialArgs = {inherit inputs dotfilesConfig;};
           home-manager.backupFileExtension = "backup";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

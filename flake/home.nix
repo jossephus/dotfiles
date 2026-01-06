@@ -2,7 +2,11 @@
   inputs,
   self,
   ...
-}: {
+}: 
+let
+  dotfilesConfig = import ../config.nix;
+in
+{
   flake.homeConfigurations = {
     aldrich = inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import inputs.nixpkgs {
@@ -10,7 +14,10 @@
         config.allowUnfree = true;
       };
 
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {
+        inherit inputs;
+        inherit dotfilesConfig;
+      };
 
       modules = [
         ../home/nixos
@@ -23,7 +30,10 @@
         config.allowUnfree = true;
       };
 
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {
+        inherit inputs;
+        inherit dotfilesConfig;
+      };
 
       modules = [
         ../home/wsl

@@ -5,6 +5,7 @@
   inputs,
   lib,
   pkgs,
+  dotfilesConfig,
   ...
 }: {
   imports = [
@@ -33,6 +34,7 @@
     ripgrep
     fzf
     bat
+    anyzig
   ];
 
   programs.livekit-cli = {
@@ -40,7 +42,7 @@
   };
 
   programs.prise = {
-    enable = true;
+    enable = dotfilesConfig.ENABLE_PRISE;
   };
 
   programs.zigdoc = {
