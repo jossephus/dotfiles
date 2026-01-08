@@ -9,7 +9,7 @@ with lib; {
   };
 
   config = mkIf config.programs.prise.enable {
-    #home.file.".config/prise/init.lua".source = ../sources/prise.lua;
+    home.file.".config/prise/init.lua".source = ../sources/init.lua;
 
     programs.bash.initExtra = ''
       if [[ -z "$PRISE" \
