@@ -74,6 +74,12 @@
   };
 
   system.defaults.dock.autohide = true;
+  system.defaults.dock.autohide-time-modifier = 0.15;
+  system.defaults.dock.autohide-delay = 0.0;
+  system.defaults.dock = {
+    show-recents = false;
+    show-process-indicators = true;
+  };
 
   system.defaults.finder = {
     _FXShowPosixPathInTitle = false; # show full path on finder title.
@@ -83,12 +89,22 @@
     FXPreferredViewStyle = "clmv";
     QuitMenuItem = true; # apparently, finder can be quit lol
     ShowStatusBar = true;
+    AppleShowAllFiles = true;
+    AppleShowAllExtensions = true;
+    FXEnableExtensionChangeWarning = false;
   };
 
   security.pam.services.sudo_local = {
     enable = true;
     touchIdAuth = true;
   };
+
+  system.defaults.CustomUserPreferences = {
+    "NSGlobalDomain" = {
+      TISRomanSwitchState = 1;
+    };
+  };
+  system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
 
   #system.defaults.NSGlobalDomain._HIHideMenuBar = false;
 }
