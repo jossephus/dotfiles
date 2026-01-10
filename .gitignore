@@ -5,3 +5,4 @@ result
 *~
 *.bak
 *.tmp
+.npm/
