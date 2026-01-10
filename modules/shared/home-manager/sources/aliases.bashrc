@@ -1,7 +1,7 @@
 #---------------------------------workspaces---------------------------#
 #
 alias ls='ls --color'
-alias cd='z'
+#alias cd='z'
 
 WORKSPACE="$HOME/Documents/workspace"
 

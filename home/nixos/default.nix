@@ -105,14 +105,6 @@
     '';
   };
 
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = true;
-      format = "$username$hostname$directory$git_branch$git_state$python$nix_shell$git_status$cmd_duration$line_break$character";
-    };
-  };
-
   home.stateVersion = "23.11";
 
   programs.home-manager.enable = true;

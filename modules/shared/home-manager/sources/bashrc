@@ -3,15 +3,14 @@ source ~/.aliases.bashrc
 
 export PATH="$PATH:/Users/jossephus/.cargo/bin:/Users/jossephus/.local/share/bob/nvim-bin:$HOME/.volta/bin"
 export PATH=/Users/jossephus/.opencode/bin:$PATH
+PROMPT_COMMAND='printf "\033]7;file://%s%s\033\\" "$HOSTNAME" "$PWD"'
 
 # amp
 export PATH="$HOME/.local/bin:$PATH"
-eval "$(starship init bash)"
-eval "$(zoxide init bash)"
 export VOLTA_HOME="$HOME/.volta/bin"
 
 # xh - 
-alias get="":q
+alias get="xh"
 
 #export PATH="$PATH:~/.local/share/bob/nvim-bin/"
 #. "$HOME/.cargo/env"

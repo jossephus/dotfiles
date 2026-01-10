@@ -4,8 +4,11 @@
 
   programs.starship.enable = true;
 
-  programs.zoxide.enable = true;
-  programs.zoxide.enableBashIntegration = true;
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+    options = ["--cmd cd"];
+  };
 
   programs.home-manager.enable = true;
 
@@ -39,16 +42,7 @@
 
   programs.atuin = {
     enable = true;
-    enableBashIntegration = false;
-  }; 
-
+    enableBashIntegration = true;
+    flags = ["--disable-ctrl-r" "--disable-up-arrow"];
+  };
 }
-
-
-  #programs.vim = {
-    #enable = true;
-    #plugins = [
-      #pkgs.vimPlugins.Vundle-vim
-    #];
-    #extraConfig = builtins.readFile ./.vimrc;
-  #};
