@@ -32,6 +32,7 @@ stdenv.mkDerivation rec {
     "--system"
     "${deps}"
     "-Dversion-string=${version}"
+    "--verbose"
   ];
 
   meta = with lib; {
