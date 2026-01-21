@@ -15,6 +15,7 @@
   ];
 
   home.packages = with pkgs; [
+    appify
     delta
     lumen
     mergiraf
@@ -35,7 +36,11 @@
     fzf
     bat
     anyzig
-  ];
+
+    stylua
+    lua-language-server
+    typst
+    ];
 
   programs.livekit-cli = {
     enable = true;

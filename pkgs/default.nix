@@ -8,6 +8,8 @@
     inherit wrapWine;
   };
   antigravity = pkgs.callPackage ./apps/antigravity.nix {};
+  codexbar = pkgs.callPackage ./apps/codexbar.nix {};
+  appify = pkgs.callPackage ./clis/appify.nix {};
   livekit-cli = pkgs.callPackage ./clis/livekit-cli.nix {};
   lumen = pkgs.callPackage ./clis/lumen.nix {};
   zigdoc = pkgs.callPackage ./clis/zigdoc.nix {};
