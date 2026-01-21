@@ -9,6 +9,7 @@
 in {
   imports = [
     ../../modules/shared
+    #./prise-service.nix
   ];
 
   home.username = "jossephus";
@@ -34,5 +35,4 @@ in {
       ${setWallpaperScript}/bin/set-wallpaper-script
     '';
   };
-
 }
