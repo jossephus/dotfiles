@@ -1,14 +1,18 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; {
   options.programs.prise = {
     enable = mkEnableOption "PRISE terminal UI for Ghostty";
+    enableService = mkEnableOption "PRISE server as a launchd service (macOS only)";
   };
 
   config = mkIf config.programs.prise.enable {
+    #home.packages = [ pkgs.prise ];
+
     #home.file.".config/prise/init.lua".source = ../sources/init.lua;
 
     programs.bash.initExtra = ''
@@ -21,3 +25,4 @@ with lib; {
     '';
   };
 }
+
