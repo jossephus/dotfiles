@@ -8,21 +8,21 @@ vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
 -- I will use this until I figure it out
 --vim.cmd([[
 --augroup vue_auto_format
-    --autocmd!
-    --autocmd BufWritePost *.vue :lua vim.lsp.buf.format { async = true }
+--autocmd!
+--autocmd BufWritePost *.vue :lua vim.lsp.buf.format { async = true }
 --augroup END
 --]])
 
 --vim.lsp.start({
-  --name = 'monkey-language-server',
-  --cmd = { 'monkey-language-server' },
+--name = 'monkey-language-server',
+--cmd = { 'monkey-language-server' },
 --})
 
 vim.filetype.add({
-  extension = {
-    ziggy = "ziggy",
-    wren = "wren"
-  }
+	extension = {
+		ziggy = "ziggy",
+		wren = "wren",
+	},
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -50,18 +50,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("wren", {}),
-	pattern = "wren",
-	callback = function()
-		vim.lsp.start({
-			name = "Wren LSP",
-			cmd = { "/home/aldrich/workspace/zigspace/src/wren-lsp/zig-out/bin/wren-lsp" },
-			root_dir = vim.loop.cwd(),
-			flags = { exit_timeout = 1000 },
-		})
-	end,
-})
+
 --vim.lsp.set_log_level("debug")
 
 --use({
@@ -108,4 +97,3 @@ vim.api.nvim_create_autocmd("FileType", {
 --},
 --},
 --})
-
