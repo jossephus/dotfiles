@@ -33,6 +33,11 @@
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
+
+  # Custom settings written to /etc/nix/nix.custom.conf by the determinate module
+  determinateNix.customSettings = {
+    keep-outputs = true;
+  };
   #nix.settings.substituters = [
   #"https://jossephus.cachix.org"
   #"https://cache.nixos.org"

@@ -45,6 +45,8 @@
     nixvim = {
       url = "github:jossephus/corrado";
     };
+
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
   };
 
   outputs = inputs:

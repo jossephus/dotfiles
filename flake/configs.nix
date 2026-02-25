@@ -54,6 +54,7 @@ in
             })
           ];
         }
+        inputs.determinate.darwinModules.default
         inputs.home-manager.darwinModules.home-manager
         {
           home-manager.extraSpecialArgs = {inherit inputs dotfilesConfig;};
