@@ -3,8 +3,8 @@
   lib,
   rustPlatform,
   fetchFromGitHub,
-  version ? "2.18.0",
-  hash ? "sha256-2nNO5f+WMwQqaUFEa8W89ZRi3cuL7XPVbKHa67tB1gY=",
+  version ? "2.19.0",
+  hash ? "sha256-YXT6nQ1TtizbO7Gcas10yuY6XJJmeFLUeSoepEizb5Q=",
 }:
 rustPlatform.buildRustPackage rec {
   pname = "lumen";
@@ -22,7 +22,7 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [pkgs.pkg-config pkgs.perl];
   buildInputs = [pkgs.openssl];
 
-  cargoHash = "sha256-awtjku2W7FsVRPOYJ8qocRl7H+6GNVk2iFgXTJrc3OY=";
+  cargoHash = "sha256-ux8OaAyffjD801yoyyfq6eCBlNhq/gXh7caJ7L5fGjE=";
 
   meta = with lib; {
     description = "AI Git Commit message, Git changes summary from the CLI (no API key required)";
