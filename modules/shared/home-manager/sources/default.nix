@@ -1,6 +1,12 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  adbConnect = pkgs.callPackage ./adb-connect.nix {};
+in {
   programs.bash.enable = true;
   programs.bash.bashrcExtra = builtins.readFile ./bashrc;
+
+  home.packages = [
+    adbConnect
+  ];
 
   programs.starship.enable = true;
 
