@@ -15,4 +15,5 @@
   zigdoc = pkgs.callPackage ./clis/zigdoc.nix {};
   anyzig = pkgs.callPackage ./clis/zvm.nix {};
   zmx = pkgs.callPackage ./clis/zmx.nix {};
+  wren-cli = pkgs.callPackage ./clis/wren-cli.nix {};
 }

@@ -26,6 +26,7 @@
     ffmpeg
     yt-dlp
     glab
+    gh
     autossh
 
     alejandra
@@ -40,7 +41,11 @@
     stylua
     lua-language-server
     typst
-    ];
+    wren-cli
+
+    go
+    tree-sitter
+  ];
 
   programs.livekit-cli = {
     enable = true;
