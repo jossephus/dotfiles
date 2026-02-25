@@ -20,6 +20,7 @@
     pkgs.ripgrep
     pkgs.orbstack
     pkgs.blueutil
+    pkgs.vscode
 
     zlsPkg.packages.aarch64-darwin.default
 
@@ -78,6 +79,9 @@
     hostName = "jossephus"; # Used for terminal prompt and Bonjour
     localHostName = "jossephus"; # Used for .local network name
   };
+
+  system.keyboard.enableKeyMapping = true;
+  system.keyboard.remapCapsLockToControl = true;
 
   system.defaults.dock.autohide = true;
   system.defaults.dock.autohide-time-modifier = 0.15;
