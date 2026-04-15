@@ -27,6 +27,11 @@ in {
   '';
 
   programs.home-manager.enable = true;
+  home.sessionVariables = {
+    LC_ALL = "en_US.UTF-8";
+    LANG = "en_US.UTF-8";
+  };
+
   home.stateVersion = "25.05";
 
   home.activation = {

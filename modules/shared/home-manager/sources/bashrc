@@ -25,7 +25,7 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 #eval "$(zoxide init bash)"
 
 ## pnpm
-export PNPM_HOME="/home/aldrich/.local/share/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -37,8 +37,11 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+export POSTHOG="$HOME/.posthog"
+export PATH=$POSTHOG:$PATH
 
 # opencode
 export PATH=/home/aldrich/.opencode/bin:$PATH
 #export BIOME_CONFIG_PATH="/home/aldrich/.config/biome/biome.json"
 export EDITOR="vim"
+export ZMX_DIR="$HOME/.zmx"

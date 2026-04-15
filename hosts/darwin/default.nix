@@ -13,7 +13,9 @@
     pkgs.vim
     pkgs.bashInteractive
     pkgs.mpv
-    pkgs.rust-bin.stable.latest.default
+    (pkgs.rust-bin.stable.latest.default.override {
+      targets = ["wasm32-wasip1" "wasm32-wasip2"];
+    })
     pkgs.zigpkgs."0.15.2"
 
     pkgs.rust-analyzer
@@ -27,6 +29,8 @@
     pkgs.antigravity
     pkgs.codexbar
     pkgs.losslesscut-bin
+    pkgs.zed-editor
+    pkgs.cocoapods
     #pkgs.autoraisea
   ];
 

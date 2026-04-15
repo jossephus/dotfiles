@@ -27,7 +27,14 @@
     yt-dlp
     glab
     gh
+    ngrok
     autossh
+    zenith
+    kitty
+
+    cloudflared
+
+    google-cloud-sql-proxy
 
     alejandra
     cachix
@@ -43,8 +50,11 @@
     typst
     wren-cli
 
+    fastfetch
+
     go
     tree-sitter
+    hurl
   ];
 
   programs.livekit-cli = {

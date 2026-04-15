@@ -9,12 +9,12 @@ with lib; {
     enable = mkEnableOption "zigdoc - documentation viewer for Zig";
     version = mkOption {
       type = types.str;
-      default = "0.2.1";
+      default = "0.3.0";
       description = "Version of zigdoc to install";
     };
     hash = mkOption {
       type = types.str;
-      default = "sha256-1F5RaOulq/KufuOS66uxSn4OCs9lHrdYCJY5gZ6tmDM=";
+      default = "sha256-MhZ7LCsqZhLazDYwDZ/hzk9lYM3Bm1j96HDQ/OrdZFg=";
       description = "Source hash for the zigdoc version";
     };
   };
