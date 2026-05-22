@@ -45,3 +45,4 @@ export PATH=/home/aldrich/.opencode/bin:$PATH
 #export BIOME_CONFIG_PATH="/home/aldrich/.config/biome/biome.json"
 export EDITOR="vim"
 export ZMX_DIR="$HOME/.zmx"
+

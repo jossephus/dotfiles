@@ -53,6 +53,7 @@
     fastfetch
 
     go
+    gopls
     tree-sitter
     hurl
   ];

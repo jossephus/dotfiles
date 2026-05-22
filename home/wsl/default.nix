@@ -65,6 +65,7 @@
 
     gh
     go
+    gopls
     jnv
     ghc
 

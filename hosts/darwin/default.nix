@@ -31,6 +31,11 @@
     pkgs.losslesscut-bin
     pkgs.zed-editor
     pkgs.cocoapods
+    pkgs.tailscale
+    pkgs.mosh
+    pkgs.google-cloud-sdk
+    pkgs.scrcpy
+    androidMirrorApp
     #pkgs.autoraisea
   ];
 

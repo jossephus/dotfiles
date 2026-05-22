@@ -18,6 +18,10 @@ in {
 
   programs.home-manager.enable = true;
 
+  home.sessionPath = [
+    "$HOME/.pulumi/bin"
+  ];
+
   home.file = {
     ".aliases.bashrc".source = ./aliases.bashrc;
     ".bashrc.old".source = ./bashrc.old;
