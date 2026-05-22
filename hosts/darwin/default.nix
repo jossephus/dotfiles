@@ -85,6 +85,19 @@ in {
   determinateNix.customSettings = {
     keep-outputs = true;
   };
+
+  # Disable Determinate Nixd automatic garbage collection.
+  # The auto-GC deletes store paths not referenced by GC roots, which
+  # includes packages from nix develop shells — forcing full re-downloads.
+  environment.etc."determinate/config.json".text = builtins.toJSON {
+    garbageCollector = {
+      strategy = "disabled";
+    };
+    builder = {
+      cpuCount = 1;
+      memoryBytes = 8589934592;
+    };
+  };
   #nix.settings.substituters = [
   #"https://jossephus.cachix.org"
   #"https://cache.nixos.org"
