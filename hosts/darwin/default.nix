@@ -63,7 +63,6 @@ in {
 
     zlsPkg.packages.aarch64-darwin.default
 
-    pkgs.antigravity
     pkgs.codexbar
     pkgs.losslesscut-bin
     pkgs.zed-editor

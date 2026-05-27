@@ -1,5 +1,5 @@
 {inputs}: {
-  custom-packages = final: prev: (import ../pkgs {pkgs = prev;});
+  custom-packages = final: prev: (import ../pkgs {pkgs = final;});
 
   modifications = final: prev: {
     discordo = final.buildGoModule rec {
