@@ -7,9 +7,14 @@
   dupeclear = pkgs.callPackage ./apps/dupe-clear.nix {
     inherit wrapWine;
   };
-  antigravity = pkgs.callPackage ./apps/antigravity.nix {};
   codexbar = pkgs.callPackage ./apps/codexbar.nix {};
   appify = pkgs.callPackage ./clis/appify.nix {};
+  atuin = pkgs.callPackage ./clis/atuin.nix {
+    rustPlatform = pkgs.makeRustPlatform {
+      rustc = pkgs.rust-bin.stable.latest.default;
+      cargo = pkgs.rust-bin.stable.latest.default;
+    };
+  };
   livekit-cli = pkgs.callPackage ./clis/livekit-cli.nix {};
   lumen = pkgs.callPackage ./clis/lumen.nix {};
   zigdoc = pkgs.callPackage ./clis/zigdoc.nix {};
