@@ -21,4 +21,5 @@
   anyzig = pkgs.callPackage ./clis/zvm.nix {};
   zmx = pkgs.callPackage ./clis/zmx.nix {};
   wren-cli = pkgs.callPackage ./clis/wren-cli.nix {};
+  ghui = pkgs.callPackage ./clis/ghui.nix {};
 }

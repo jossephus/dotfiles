@@ -37,7 +37,7 @@
 
     cat > "$app/Contents/MacOS/AndroidMirror" <<'EOF'
     #!/usr/bin/env bash
-    exec ${pkgs.scrcpy}/bin/scrcpy --render-driver=opengl
+    exec ${pkgs.scrcpy}/bin/scrcpy -K --render-driver=opengl
     EOF
 
     chmod +x "$app/Contents/MacOS/AndroidMirror"
@@ -72,6 +72,7 @@ in {
     pkgs.google-cloud-sdk
     pkgs.scrcpy
     androidMirrorApp
+
     #pkgs.autoraisea
   ];
 

@@ -30,6 +30,7 @@
     ngrok
     autossh
     zenith
+    tmux
     kitty
 
     cloudflared
@@ -49,6 +50,7 @@
     lua-language-server
     typst
     wren-cli
+    ghui
 
     fastfetch
 
