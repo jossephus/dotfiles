@@ -22,5 +22,4 @@ nvim-clean:
 	rm -rvf ${HOME}/.config/nvim/
 
 nvim-test: nvim-clean 
-	rsync -avz --copy-links --chmod=D2755,F744 /home/aldrich/.config/nixos-config/home/modules/nvim/config/ ${HOME}/.config/nvim/
-
+	rsync -avz --copy-links --chmod=D2755,F744 users/jossephus/programs/neovim/ ${HOME}/.config/nvim/

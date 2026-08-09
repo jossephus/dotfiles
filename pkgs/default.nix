@@ -1,25 +1,10 @@
-{pkgs ? import <nixpkgs> {}, ...}: rec {
-  curosr = pkgs.callPackage ./apps/cursor.nix {};
-  wrapWine = pkgs.callPackage ./wrapWine.nix {};
-  pot_player = pkgs.callPackage ./apps/pot_player.nix {
-    inherit wrapWine;
-  };
-  dupeclear = pkgs.callPackage ./apps/dupe-clear.nix {
-    inherit wrapWine;
-  };
+{pkgs}: {
   codexbar = pkgs.callPackage ./apps/codexbar.nix {};
   appify = pkgs.callPackage ./clis/appify.nix {};
-  atuin = pkgs.callPackage ./clis/atuin.nix {
-    rustPlatform = pkgs.makeRustPlatform {
-      rustc = pkgs.rust-bin.stable.latest.default;
-      cargo = pkgs.rust-bin.stable.latest.default;
-    };
-  };
   livekit-cli = pkgs.callPackage ./clis/livekit-cli.nix {};
   lumen = pkgs.callPackage ./clis/lumen.nix {};
   zigdoc = pkgs.callPackage ./clis/zigdoc.nix {};
   anyzig = pkgs.callPackage ./clis/zvm.nix {};
-  zmx = pkgs.callPackage ./clis/zmx.nix {};
   wren-cli = pkgs.callPackage ./clis/wren-cli.nix {};
   ghui = pkgs.callPackage ./clis/ghui.nix {};
 }

@@ -1,5 +1,0 @@
-{pkg, ...}: {
-  imports = [
-    ./configuration.nix
-  ];
-}
