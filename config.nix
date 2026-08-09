@@ -1,3 +1,0 @@
-{
-  ENABLE_PRISE = false;
-}

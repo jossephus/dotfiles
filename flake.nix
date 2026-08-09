@@ -1,62 +1,87 @@
 {
-  description = "My Nixos Configuration";
+  description = "Nix configurations for macOS, NixOS, and WSL";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-
     android-nixpkgs = {
       url = "github:tadfisher/android-nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # programming languages i want to have system wide
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
+    ghostty.url = "github:ghostty-org/ghostty";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     zig-overlay.url = "github:mitchellh/zig-overlay";
     zlsPkg.url = "github:zigtools/zls";
-
-    ghostty.url = "github:ghostty-org/ghostty";
-
-    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
-
-    # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    # Helix Editor
-    helix.url = "github:helix-editor/helix";
-
-    # nix-colors
-    nix-colors.url = "github:misterio77/nix-colors";
-
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixvim = {
-      url = "github:jossephus/corrado";
-    };
-
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
   };
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" "aarch64-darwin" ];
-      imports = [ ./flake ];
+  outputs = inputs @ {
+    nixpkgs,
+    self,
+    ...
+  }: let
+    mkSystem = import ./lib/mk-system.nix inputs;
+    systems = ["aarch64-darwin" "x86_64-linux"];
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+  in {
+    overlays.default = final: _: import ./pkgs {pkgs = final;};
+
+    packages = forAllSystems (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+      nixpkgs.lib.filterAttrs
+      (_: package: nixpkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform package)
+      (import ./pkgs {inherit pkgs;}));
+
+    darwinConfigurations.jossephus = mkSystem {
+      profile = "darwin";
+      system = "aarch64-darwin";
+      user = "jossephus";
+      hostModule = ./hosts/darwin;
+      homeModule = ./users/jossephus/darwin.nix;
     };
+
+    nixosConfigurations.aldrich-main = mkSystem {
+      profile = "nixos";
+      system = "x86_64-linux";
+      user = "aldrich";
+      hostModule = ./hosts/nixos/main-configuration.nix;
+      homeModule = ./users/jossephus/nixos.nix;
+    };
+
+    homeConfigurations = {
+      aldrich = mkSystem {
+        profile = "home";
+        system = "x86_64-linux";
+        user = "aldrich";
+        homeModule = ./users/jossephus/nixos.nix;
+      };
+
+      wsl = mkSystem {
+        profile = "home";
+        system = "x86_64-linux";
+        user = "aldrich";
+        homeModule = ./users/jossephus/wsl.nix;
+      };
+    };
+  };
 }

@@ -1,0 +1,39 @@
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  setWallpaperScript = import ./programs/wallpaper.nix {inherit pkgs;};
+in {
+  imports = [
+    ./default.nix
+  ];
+
+  home.username = "jossephus";
+  home.homeDirectory = lib.mkForce "/Users/jossephus";
+
+  programs.bash.initExtra = ''
+    shopt -s histappend
+    shopt -s checkwinsize
+    shopt -s extglob
+    shopt -s globstar
+    shopt -s checkjobs
+
+    alias cd='z'
+  '';
+
+  programs.home-manager.enable = true;
+  home.sessionVariables = {
+    LC_ALL = "en_US.UTF-8";
+    LANG = "en_US.UTF-8";
+  };
+
+  home.stateVersion = "25.05";
+
+  home.activation = {
+    setWallpaper = lib.hm.dag.entryAfter ["revealHomeLibraryDirectory"] ''
+      echo "[+] Setting wallpaper"
+      ${setWallpaperScript}/bin/set-wallpaper-script
+    '';
+  };
+}
