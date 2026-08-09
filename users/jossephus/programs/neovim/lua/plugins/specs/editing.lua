@@ -99,22 +99,6 @@ return {
 			})
 		end,
 	},
-	--{
-	--"ahmedkhalf/project.nvim",
-	--config = function()
-	--require('project_nvim').setup({
-
-	--})
-	--end,
-	--},
-	--{
-	--"Shatur/neovim-session-manager",
-	--config = function()
-	--require("session_manager").setup({
-	--autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
-	--})
-	--end,
-	--},
 	{
 		"jossephus/vim-geez",
 		-- use <Leader>g to toggle between geez and english

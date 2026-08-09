@@ -24,7 +24,6 @@
     lazygit
 
     git
-    ripgrep
     just
 
     nix-output-monitor
@@ -34,15 +33,11 @@
     silicon
 
     jq
-    ffmpeg
-    stylua
 
     asciinema
     sshfs
 
     mdbook
-    fd
-
     xclip
 
     as31
@@ -55,22 +50,12 @@
 
     devenv
 
-    gh
-    go
-    gopls
     jnv
     ghc
 
-    tree-sitter
     nil
     nixd
 
     inputs.ghostty.packages.x86_64-linux.default
   ];
-
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
-
-  programs.home-manager.enable = true;
 }

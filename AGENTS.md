@@ -42,7 +42,6 @@ nixpkgs-fmt --check .  # Check Nix formatting
 ## File Organization
 
 - `hosts/`: System-specific configs (darwin/, nixos/)
-- `modules/home-manager/`: Reusable Home Manager feature modules
 - `users/jossephus/`: Shared and platform-specific Home Manager configurations
 - `users/jossephus/programs/`: Managed program configuration files
 - `pkgs/`: Custom package definitions
@@ -54,18 +53,13 @@ nixpkgs-fmt --check .  # Check Nix formatting
 
 1. Create package in `pkgs/clis/tool-name.nix` (or `pkgs/apps/` for GUI apps)
 2. Add to `pkgs/default.nix`: `tool-name = pkgs.callPackage ./clis/tool-name.nix {};`
-3. If it should be configurable across systems, create a module in `modules/home-manager/tool-name.nix`. Confirm whether the CLI needs configuration before creating a module.
-4. Module should expose `options.programs.tool-name` with `enable`, `version`, and any hash options
-5. Add the module to `modules/home-manager/default.nix`
-6. Enable in target config: `programs.tool-name.enable = true;`
-7. use nurl to get the sha for any tool. 
+3. Add the package to the relevant `home.packages` or `environment.systemPackages` list.
+4. Use `nurl` to get the source hash.
 
 Example structure for livekit-cli:
 ```
-pkgs/clis/livekit-cli.nix           # Package definition with version/hash parameters
-modules/home-manager/
-  ├── default.nix                   # Imports all feature modules
-  └── livekit.nix                   # Configuration module with options
+pkgs/clis/livekit-cli.nix           # Package definition
+users/jossephus/default.nix         # Installs it for the user
 ```
 
 ## Conventions

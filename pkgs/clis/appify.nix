@@ -1,5 +1,10 @@
-{ lib, stdenv, fetchurl, version ? "0.2.0", hash ? "sha256-T6xuhIqN5QMApR6XN+WgYuZ5wg9zY+yjTtOfroBxDKo=" }:
-
+{
+  lib,
+  stdenv,
+  fetchurl,
+  version ? "0.2.0",
+  hash ? "sha256-T6xuhIqN5QMApR6XN+WgYuZ5wg9zY+yjTtOfroBxDKo=",
+}:
 stdenv.mkDerivation rec {
   pname = "appify";
   inherit version hash;
@@ -22,6 +27,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/mattrobenolt/appify";
     license = licenses.mit;
     mainProgram = "appify";
-    platforms = platforms.darwin;
+    platforms = ["aarch64-darwin"];
   };
 }

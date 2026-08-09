@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./default.nix
   ];
@@ -15,7 +11,6 @@
     tcl-8_5
     dpkg
 
-    ripgrep
     just
 
     nodePackages.pnpm
@@ -24,8 +19,6 @@
     nodejs
 
     nix-output-monitor
-
-    typst
 
     rubik
     vlc
@@ -40,14 +33,6 @@
     "Xft.dpi" = 172;
   };
 
-  programs.git = {
-    enable = true;
-    settings.user = {
-      name = "jossephus";
-      email = "yosephtuemay64@gmail.com";
-    };
-  };
-
   programs.direnv = {
     enable = true;
     enableBashIntegration = true;
@@ -55,13 +40,8 @@
   };
 
   programs.bash = {
-    enable = true;
     enableCompletion = true;
-    shellAliases = {
-      ll = "ls -laf";
-      os = "sudo nixos-rebuild switch --flake ~/.config/nixos-config#nixos-test";
-      hm = "home-manager switch --flake ~/.config/nixos-config/";
-    };
+    shellAliases.ll = "ls -laf";
     bashrcExtra = ''
       flakify() {
         if [ ! -e .envrc ]; then
@@ -73,8 +53,4 @@
   };
 
   home.stateVersion = "23.11";
-
-  programs.home-manager.enable = true;
-
-  home.sessionVariables.NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [];
 }

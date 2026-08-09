@@ -3,7 +3,11 @@
   pkgs,
   ...
 }: let
-  setWallpaperScript = import ./programs/wallpaper.nix {inherit pkgs;};
+  adbConnect = pkgs.callPackage ./programs/adb-connect.nix {};
+  wallpaper = pkgs.fetchurl {
+    url = "https://misc-assets.raycast.com/wallpapers/loupe-mono-dark.heic";
+    hash = "sha256-MwvRU7U4tO6F1duxBrHLOd7F5Gnzv/zyiZkm5EFqkY4=";
+  };
 in {
   imports = [
     ./default.nix
@@ -22,10 +26,13 @@ in {
     alias cd='z'
   '';
 
-  programs.home-manager.enable = true;
+  home.packages = [adbConnect];
+
+  home.sessionPath = ["$HOME/Library/pnpm"];
   home.sessionVariables = {
     LC_ALL = "en_US.UTF-8";
     LANG = "en_US.UTF-8";
+    PNPM_HOME = "$HOME/Library/pnpm";
   };
 
   home.stateVersion = "25.05";
@@ -33,7 +40,7 @@ in {
   home.activation = {
     setWallpaper = lib.hm.dag.entryAfter ["revealHomeLibraryDirectory"] ''
       echo "[+] Setting wallpaper"
-      ${setWallpaperScript}/bin/set-wallpaper-script
+      /usr/bin/osascript -e 'tell application "Finder" to set desktop picture to POSIX file "${wallpaper}"'
     '';
   };
 }

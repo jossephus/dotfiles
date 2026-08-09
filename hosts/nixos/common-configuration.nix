@@ -80,10 +80,7 @@
     eww
     gcc
     git
-    go
-    helix
     htop
-    kitty
     lutris
     motrix
     rofi

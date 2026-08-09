@@ -36,9 +36,23 @@
     self,
     ...
   }: let
-    mkSystem = import ./lib/mk-system.nix inputs;
+    mkSystem = import ./lib/mk-system.nix {
+      inherit nixpkgs;
+      inherit (inputs) home-manager nix-darwin;
+    };
     systems = ["aarch64-darwin" "x86_64-linux"];
     forAllSystems = nixpkgs.lib.genAttrs systems;
+    specialArgs = {inherit inputs self;};
+    overlays = [
+      self.overlays.default
+      inputs.rust-overlay.overlays.default
+      (import ./overlays/android.nix {
+        androidNixpkgs = inputs.android-nixpkgs;
+      })
+      (final: _: {
+        zigpkgs = inputs.zig-overlay.packages.${final.stdenv.hostPlatform.system};
+      })
+    ];
   in {
     overlays.default = final: _: import ./pkgs {pkgs = final;};
 
@@ -58,6 +72,9 @@
       user = "jossephus";
       hostModule = ./hosts/darwin;
       homeModule = ./users/jossephus/darwin.nix;
+      inherit overlays;
+      extraModules = [inputs.determinate.darwinModules.default];
+      inherit specialArgs;
     };
 
     nixosConfigurations.aldrich-main = mkSystem {
@@ -66,6 +83,7 @@
       user = "aldrich";
       hostModule = ./hosts/nixos/main-configuration.nix;
       homeModule = ./users/jossephus/nixos.nix;
+      inherit overlays specialArgs;
     };
 
     homeConfigurations = {
@@ -74,6 +92,7 @@
         system = "x86_64-linux";
         user = "aldrich";
         homeModule = ./users/jossephus/nixos.nix;
+        inherit overlays specialArgs;
       };
 
       wsl = mkSystem {
@@ -81,6 +100,7 @@
         system = "x86_64-linux";
         user = "aldrich";
         homeModule = ./users/jossephus/wsl.nix;
+        inherit overlays specialArgs;
       };
     };
   };
