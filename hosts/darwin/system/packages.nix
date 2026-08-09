@@ -25,8 +25,8 @@
     zed-editor
     zigpkgs."0.15.2"
     inputs.zlsPkg.packages.aarch64-darwin.default
-    (rust-bin.stable.latest.default.override {
-      targets = ["wasm32-wasip1" "wasm32-wasip2"];
-    })
+    #(rust-bin.stable.latest.default.override {
+    #targets = ["wasm32-wasip1" "wasm32-wasip2"];
+    #})
   ];
 }
