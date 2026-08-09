@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, version ? "main", hash ? "sha256-UqGdIsLoSh5bTxf7AvPBh+abSPylKMlMbDw+j0IclKM=" }:
+{ lib, stdenv, fetchFromGitHub, version ? "unstable-2022-04-09", hash ? "sha256-UqGdIsLoSh5bTxf7AvPBh+abSPylKMlMbDw+j0IclKM=" }:
 
 stdenv.mkDerivation rec {
   pname = "wren-cli";
@@ -7,7 +7,7 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "wren-lang";
     repo = "wren-cli";
-    rev = version;
+    rev = "18553636618a4d33f10af9b5ab92da6431784a8c";
     inherit hash;
     fetchSubmodules = true;
   };

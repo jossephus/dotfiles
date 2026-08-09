@@ -20,6 +20,7 @@
         autohide-time-modifier = 0.15;
         show-process-indicators = true;
         show-recents = false;
+        tilesize = 48;
       };
 
       finder = {
