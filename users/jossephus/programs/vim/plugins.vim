@@ -32,11 +32,6 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'mattn/emmet-vim'
 "Plugin 'ervandew/supertab'
 
-" vim-snipmate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-
 Plugin 'dstein64/vim-startuptime'
 
 Plugin 'junegunn/seoul256.vim'

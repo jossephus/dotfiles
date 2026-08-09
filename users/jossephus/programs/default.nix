@@ -34,7 +34,6 @@
       };
     };
     ".vim/plugin".source = ./vim/plugin;
-    ".vim/snippets".source = ./vim/snippets;
     ".vim/plugins.vim".source = ./vim/plugins.vim;
   };
 

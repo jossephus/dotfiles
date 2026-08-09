@@ -109,7 +109,6 @@ nmap <Leader>ep :tabedit $HOME/.vim/plugins.vim<cr>
 nmap <Leader>eb :tabedit $HOME/.bashrc<cr>
 nmap <Leader>et :tabedit $HOME/.todos.md<cr>
 nmap <Leader>ec :tabedit $HOME/.check.md<cr>
-nmap <Leader>es :tabedit ~/.vim/snippets/
 
 
 " default tab operations are way too long 
@@ -209,14 +208,6 @@ set hidden
 nmap <silent>K <Plug>(lcn-hover)
 nmap <silent> gd <Plug>(lcn-definition)
 nmap <silent> <Leader>vrr <Plug>(lcn-rename)
-
-"/
-"/ SnipMate
-"/
-"let g:snipMate = { 'snippet_version' : 1 }
-"let g:snipMate = get(g:, 'snipMate', 'snippet_version': 1})
-let g:snipMate = get(g:, 'snipMate', {'snippet_version': 1})
-
 
 "/
 "/ seoul2 colorscheme
