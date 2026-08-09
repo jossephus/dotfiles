@@ -1,0 +1,24 @@
+source ~/.aliases.bashrc
+
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/bob/nvim-bin:$HOME/.opencode/bin:$PATH"
+PROMPT_COMMAND='printf "\033]7;file://%s%s\033\\" "$HOSTNAME" "$PWD"'
+
+alias get="xh"
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export POSTHOG="$HOME/.posthog"
+export PATH="$POSTHOG:$PATH"
+export EDITOR="vim"
+export ZMX_DIR="$HOME/.zmx"
