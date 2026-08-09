@@ -1,10 +1,10 @@
-{
-  pkgs,
-  lib,
-  rustPlatform,
-  fetchFromGitHub,
-  version ? "2.19.0",
-  hash ? "sha256-YXT6nQ1TtizbO7Gcas10yuY6XJJmeFLUeSoepEizb5Q=",
+{ pkgs
+, lib
+, rustPlatform
+, fetchFromGitHub
+, version ? "2.19.0"
+, hash ? "sha256-YXT6nQ1TtizbO7Gcas10yuY6XJJmeFLUeSoepEizb5Q="
+,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "lumen";
@@ -19,8 +19,8 @@ rustPlatform.buildRustPackage rec {
 
   doCheck = false;
 
-  nativeBuildInputs = [pkgs.pkg-config pkgs.perl];
-  buildInputs = [pkgs.openssl];
+  nativeBuildInputs = [ pkgs.pkg-config pkgs.perl ];
+  buildInputs = [ pkgs.openssl ];
 
   cargoHash = "sha256-ux8OaAyffjD801yoyyfq6eCBlNhq/gXh7caJ7L5fGjE=";
 

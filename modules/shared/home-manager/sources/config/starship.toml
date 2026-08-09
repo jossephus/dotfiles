@@ -1,3 +1,8 @@
+[env_var.ZMX_SESSION]
+symbol = " "
+style = "bold magenta"
+format = "[$symbol$env_value]($style) "
+
 format = """
 $username\
 $hostname\
@@ -9,6 +14,8 @@ $cmd_duration\
 $nix_shell\
 $line_break\
 $python\
+${env_var.ZMX_SESSION}\
+$all \
 $character"""
 
 [directory]
@@ -45,3 +52,4 @@ style = "yellow"
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-black"
+

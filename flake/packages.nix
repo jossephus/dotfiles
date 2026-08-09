@@ -1,14 +1,12 @@
-{
-  inputs,
-  self,
-  ...
+{ inputs
+, self
+, ...
 }: {
   perSystem =
-    {
-      system,
-      pkgs,
-      ...
+    { system
+    , pkgs
+    , ...
     }: {
-      packages = import ../pkgs {inherit pkgs;};
+      packages = import ../pkgs { inherit pkgs; };
     };
 }

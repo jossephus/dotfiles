@@ -1,8 +1,7 @@
-{
-  lib,
-  pkgs,
-  flutter,
-  ...
+{ lib
+, pkgs
+, flutter
+, ...
 }:
 flutter.buildFlutterApplication {
   pname = "Musicpod";
@@ -15,9 +14,9 @@ flutter.buildFlutterApplication {
     hash = "sha256-tYw5yZYfgUFoYLwlz9lWP4oD/z05NHUO/5upV1qbPAE=";
   };
 
-  nativeBuildInputs = with pkgs; [ninja pkg-config mpv];
+  nativeBuildInputs = with pkgs; [ ninja pkg-config mpv ];
 
-  buildInputs = with pkgs; [libplacebo vapoursynth vulkan-headers vulkan-loader libass ffmpeg libunwind shaderc lcms2 libdovi libdvdnav libdvdread libbluray lua rubberband SDL2 libuchardet zimg alsa-lib pipewire libpulseaudio libcaca libarchive libbs2b libjack2 mujs libpng openalSoft libsixel swift libtheora libvdpau libdrm libcdio libcdio-paranoia xgboost gst_all_1.gstreamer gst_all_1.gst-plugins-base];
+  buildInputs = with pkgs; [ libplacebo vapoursynth vulkan-headers vulkan-loader libass ffmpeg libunwind shaderc lcms2 libdovi libdvdnav libdvdread libbluray lua rubberband SDL2 libuchardet zimg alsa-lib pipewire libpulseaudio libcaca libarchive libbs2b libjack2 mujs libpng openalSoft libsixel swift libtheora libvdpau libdrm libcdio libcdio-paranoia xgboost gst_all_1.gstreamer gst_all_1.gst-plugins-base ];
 
   pubspecLock = lib.importJSON ./pubspec.lock.json;
 

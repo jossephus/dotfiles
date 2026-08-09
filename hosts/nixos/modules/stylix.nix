@@ -1,7 +1,6 @@
-{
-  pkgs,
-  stylix,
-  ...
+{ pkgs
+, stylix
+, ...
 }: {
   stylix = {
     #image = pkgs.fetchurl {

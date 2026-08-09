@@ -14,6 +14,11 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # programming languages i want to have system wide
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -50,8 +55,8 @@
   };
 
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-darwin"];
-      imports = [./flake];
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-darwin" ];
+      imports = [ ./flake ];
     };
 }

@@ -1,11 +1,11 @@
-{
-  lib,
-  stdenv,
-  zig,
-  fetchFromGitHub,
-  version ? "0.2.0",
-  hash ? "sha256-LzzQOHyv8DE6fwIlNJRxrSFMtHruFe5X3wxSQhrY9JY=",
-  callPackage,
+{ lib
+, stdenv
+, zig
+, fetchFromGitHub
+, version ? "0.2.0"
+, hash ? "sha256-LzzQOHyv8DE6fwIlNJRxrSFMtHruFe5X3wxSQhrY9JY="
+, callPackage
+,
 }:
 stdenv.mkDerivation rec {
   pname = "zmx";
@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [zig.hook];
+  nativeBuildInputs = [ zig.hook ];
 
   zigBuildFlags = [
     "-Doptimize=ReleaseSafe"

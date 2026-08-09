@@ -1,6 +1,8 @@
-{pkgs, ...}: let
-  adbConnect = pkgs.callPackage ./adb-connect.nix {};
-in {
+{ pkgs, ... }:
+let
+  adbConnect = pkgs.callPackage ./adb-connect.nix { };
+in
+{
   programs.bash.enable = true;
   programs.bash.bashrcExtra = builtins.readFile ./bashrc;
 
@@ -13,7 +15,7 @@ in {
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
-    options = ["--cmd cd"];
+    options = [ "--cmd cd" ];
   };
 
   programs.home-manager.enable = true;
@@ -53,6 +55,6 @@ in {
   programs.atuin = {
     enable = true;
     enableBashIntegration = true;
-    flags = ["--disable-ctrl-r" "--disable-up-arrow"];
+    flags = [ "--disable-ctrl-r" "--disable-up-arrow" ];
   };
 }

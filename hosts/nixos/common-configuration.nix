@@ -1,11 +1,10 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  outputs,
-  ...
+{ config
+, pkgs
+, outputs
+, ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -62,12 +61,12 @@
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     ];
 
     fontconfig = {
       defaultFonts = {
-        monospace = ["Fira Code Nerd Font"];
+        monospace = [ "Fira Code Nerd Font" ];
       };
     };
   };
@@ -100,7 +99,7 @@
     isNormalUser = true;
     description = "aldrich";
     shell = pkgs.bashInteractive;
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       firefox
       #spotify
@@ -154,7 +153,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    (pkgs.callPackage ../pkgs/apps/dataflare.nix {})
+    (pkgs.callPackage ../pkgs/apps/dataflare.nix { })
     pkgs.wget
     pkgs.git
     pkgs.helix
@@ -195,17 +194,19 @@
 
     pkgs.zed-editor
 
-    (let
-      base = pkgs.appimageTools.defaultFhsEnvArgs;
-    in
+    (
+      let
+        base = pkgs.appimageTools.defaultFhsEnvArgs;
+      in
       pkgs.buildFHSUserEnv (base
         // {
-          name = "fhs";
-          targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
-          profile = "export FHS=1";
-          runScript = "bash";
-          extraOutputsToInstall = ["dev"];
-        }))
+        name = "fhs";
+        targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [ pkgs.pkg-config ];
+        profile = "export FHS=1";
+        runScript = "bash";
+        extraOutputsToInstall = [ "dev" ];
+      })
+    )
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -244,5 +245,5 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
   # enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

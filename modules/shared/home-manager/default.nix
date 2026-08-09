@@ -1,12 +1,11 @@
 # Toggle between two home-manager configuration approaches:
 # - nixified: Full Nix-based configuration
 # - sources: Static dotfiles with minimal Nix wrapping
-{
-  inputs,
-  lib,
-  pkgs,
-  dotfilesConfig,
-  ...
+{ inputs
+, lib
+, pkgs
+, dotfilesConfig
+, ...
 }: {
   imports = [
     #./nixified

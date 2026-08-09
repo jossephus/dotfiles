@@ -1,8 +1,7 @@
-{
-  inputs,
-  self,
-  ...
-}: 
+{ inputs
+, self
+, ...
+}:
 let
   dotfilesConfig = import ../config.nix;
 in

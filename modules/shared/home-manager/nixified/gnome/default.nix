@@ -1,7 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }: {
   # GNOME configuration - Linux only
   imports = lib.optionals pkgs.stdenv.isLinux [

@@ -1,8 +1,8 @@
-{
-  lib,
-  stdenvNoCC,
-  fetchurl,
-  unzip,
+{ lib
+, stdenvNoCC
+, fetchurl
+, unzip
+,
 }:
 stdenvNoCC.mkDerivation {
   pname = "codexbar";
@@ -13,7 +13,7 @@ stdenvNoCC.mkDerivation {
     sha256 = "sha256-LD86SQCPLi/yZOSjatAntcFA1hwzGsLnrOLB/5sMadw=";
   };
 
-  nativeBuildInputs = [unzip];
+  nativeBuildInputs = [ unzip ];
 
   unpackCmd = "unzip -q $curSrc";
 
@@ -30,7 +30,7 @@ stdenvNoCC.mkDerivation {
     description = "Menu bar app to keep your Codex, Claude, Cursor, and other AI limits visible";
     homepage = "https://github.com/steipete/CodexBar";
     license = licenses.mit;
-    platforms = ["aarch64-darwin" "x86_64-darwin"];
-    sourceProvenance = with sourceTypes; [binaryNativeCode];
+    platforms = [ "aarch64-darwin" "x86_64-darwin" ];
+    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };
 }

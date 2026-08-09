@@ -1,12 +1,13 @@
-{
-  self,
-  pkgs,
-  rust-overlay,
-  zig-overlay,
-  zlsPkg,
-  ...
-}: let
-  androidMirrorApp = pkgs.runCommand "android-mirror-app" {} ''
+{ self
+, pkgs
+, rust-overlay
+, zig-overlay
+, zlsPkg
+, ...
+}:
+let
+  androidDeviceSerial = "RR8W70320MP";
+  androidMirrorApp = pkgs.runCommand "android-mirror-app" { } ''
     app="$out/Applications/Android Mirror.app"
     mkdir -p "$app/Contents/MacOS"
 
@@ -37,12 +38,13 @@
 
     cat > "$app/Contents/MacOS/AndroidMirror" <<'EOF'
     #!/usr/bin/env bash
-    exec ${pkgs.scrcpy}/bin/scrcpy -K --render-driver=opengl
+    exec ${pkgs.scrcpy}/bin/scrcpy -s ${androidDeviceSerial} -K --render-driver=opengl
     EOF
 
     chmod +x "$app/Contents/MacOS/AndroidMirror"
   '';
-in {
+in
+{
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
 
@@ -51,7 +53,7 @@ in {
     pkgs.bashInteractive
     pkgs.mpv
     (pkgs.rust-bin.stable.latest.default.override {
-      targets = ["wasm32-wasip1" "wasm32-wasip2"];
+      targets = [ "wasm32-wasip1" "wasm32-wasip2" ];
     })
     pkgs.zigpkgs."0.15.2"
 
@@ -71,6 +73,9 @@ in {
     pkgs.mosh
     pkgs.google-cloud-sdk
     pkgs.scrcpy
+    pkgs.android-sdk
+    pkgs.gradle
+    pkgs.jdk21
     androidMirrorApp
 
     #pkgs.autoraisea
@@ -121,7 +126,7 @@ in {
   users.users.jossephus.shell = "${pkgs.bashInteractive}/bin/bash";
 
   # Add nix bash to valid shells
-  environment.shells = [pkgs.bashInteractive];
+  environment.shells = [ pkgs.bashInteractive ];
 
   # Ensure shell is properly set
   programs.bash.enable = true;
@@ -176,4 +181,9 @@ in {
   system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
 
   #system.defaults.NSGlobalDomain._HIHideMenuBar = false;
+
+  # Show the native Sound control in the menu bar so output devices
+  # (MacBook speakers, Borofone headphones, etc.) can be switched
+  # with one click instead of opening System Settings.
+  system.defaults.controlcenter.Sound = true;
 }
