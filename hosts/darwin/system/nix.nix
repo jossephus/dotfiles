@@ -6,7 +6,7 @@
     customSettings = {
       keep-outputs = true;
       extra-substituters = [ "https://cache.jossephus.et/jossephus" ];
-      extra-trusted-public-keys = [ "jossephus:iG2HsPZsVgIJtR6OMLRM4XXoBRJ/NTvYTT0lIcssJ74=" ];
+      extra-trusted-public-keys = [ "jossephus:VNt933J5SAbf+pEOghPT361rDmeNJCa3+R3xhnWbX68=" ];
     };
     determinateNixd = {
       garbageCollector.strategy = "disabled";
