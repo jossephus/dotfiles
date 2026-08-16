@@ -3,9 +3,9 @@
 , fetchurl
 , version ? "0.7.1"
 , darwinHash ? "sha256-KP/GaHFlMB2a4xV0JVf103ZMfnKsK7v8iS+Hqx45pbc="
-, darwinX64Hash ? "sha256-WZrO+eVMfd0X3xN6pycpLJxMDByeUiLwYH1N7yF4fxs="
-, linuxArm64Hash ? "sha256-W4S3IccoP6yFhWYPePWNCqgq0qUuDs9w0M7qaxoYF8I="
-, linuxX64Hash ? "sha256-TE6Ids4vI/MjpBCUhIIjq7ygIP6P3vbqrvr5d2KPhX4="
+, darwinX64Hash ? "sha256-WauY75/Ed90X/nE6MpcpLCNMDB6VIjDxYHTbzxdoehs="
+, linuxArm64Hash ? "sha256-W4JLchwjOvyFuWBl941Y2tCrKiU+DPt9DM66avGCoXw="
+, linuxX64Hash ? "sha256-TEqHZGrgLzI6QWkEhBIjo7yoAg/o9+b6rvpXQhhvpYo="
 ,
 }:
 let
