@@ -6,14 +6,14 @@
   home.packages = with pkgs; [
     devenv
     btop
-    neofetch
+    fastfetch
     eza
     tcl-8_5
     dpkg
 
     just
 
-    nodePackages.pnpm
+    pnpm
     bun
 
     nodejs

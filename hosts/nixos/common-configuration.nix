@@ -62,18 +62,20 @@
       steam
       telegram-desktop
       transmission_4-qt
-      wasistlos
+      karere
       wezterm
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    extra-substituters = [ "https://cache.jossephus.et/jossephus" ];
+    extra-trusted-public-keys = [ "jossephus:iG2HsPZsVgIJtR6OMLRM4XXoBRJ/NTvYTT0lIcssJ74=" ];
+  };
 
   systemd.settings.Manager.DefaultLimitNOFILE = 1048576;
-  systemd.user.extraConfig = ''
-    DefaultLimitNOFILE=1048576
-  '';
+  systemd.user.settings.Manager.DefaultLimitNOFILE = 1048576;
 
   environment.systemPackages = with pkgs; [
     dunst

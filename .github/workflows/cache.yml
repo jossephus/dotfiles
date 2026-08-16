@@ -1,0 +1,82 @@
+name: Cache
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dotfiles-cache
+  cancel-in-progress: false
+
+jobs:
+  build-linux:
+    name: Build and push Linux cache
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+
+      - name: Speed up Nix builds
+        uses: DeterminateSystems/magic-nix-cache-action@v14
+
+      - name: Install attic client
+        run: |
+          echo "ATTIC_BIN=$(nix build --no-link --print-out-paths nixpkgs#attic-client)/bin/attic" >> "$GITHUB_ENV"
+
+      - name: Login to cache
+        env:
+          ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
+        run: |
+          "$ATTIC_BIN" login machine https://cache.jossephus.et "$ATTIC_TOKEN"
+
+      - name: Build packages and push
+        run: |
+          set -euo pipefail
+          names="$(nix eval --json '.#packages.x86_64-linux' --apply 'builtins.attrNames' | jq -r '.[]')"
+          for name in $names; do
+            path="$(nix build --no-link --print-out-paths ".#packages.x86_64-linux.$name")"
+            "$ATTIC_BIN" push machine:jossephus "$path"
+          done
+
+      - name: Build NixOS system and push
+        run: |
+          set -euo pipefail
+          path="$(nix build --no-link --print-out-paths '.#nixosConfigurations.aldrich-main.config.system.build.toplevel')"
+          "$ATTIC_BIN" push machine:jossephus "$path"
+
+  build-darwin:
+    name: Build and push macOS cache
+    runs-on: macos-14
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+
+      - name: Speed up Nix builds
+        uses: DeterminateSystems/magic-nix-cache-action@v14
+
+      - name: Install attic client
+        run: |
+          echo "ATTIC_BIN=$(nix build --no-link --print-out-paths nixpkgs#attic-client)/bin/attic" >> "$GITHUB_ENV"
+
+      - name: Login to cache
+        env:
+          ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
+        run: |
+          "$ATTIC_BIN" login machine https://cache.jossephus.et "$ATTIC_TOKEN"
+
+      - name: Build darwin system and push
+        run: |
+          set -euo pipefail
+          path="$(nix build --no-link --print-out-paths '.#darwinConfigurations.jossephus.config.system.build.toplevel')"
+          "$ATTIC_BIN" push machine:jossephus "$path"

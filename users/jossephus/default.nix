@@ -13,7 +13,6 @@
       autossh
       bat
       biome
-      cachix
       cloudflared
       delta
       fastfetch
