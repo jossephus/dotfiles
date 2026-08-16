@@ -62,9 +62,6 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v22
 
-      - name: Speed up Nix builds
-        uses: DeterminateSystems/magic-nix-cache-action@v14
-
       - name: Install attic client
         run: |
           echo "ATTIC_BIN=$(nix build --no-link --print-out-paths nixpkgs#attic-client)/bin/attic" >> "$GITHUB_ENV"
