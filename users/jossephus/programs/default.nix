@@ -1,4 +1,18 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [inputs.multiverse.homeManagerModules.default];
+
+  multiverse = {
+    enable = true;
+    config.allowUnfree = true;
+    pins = {
+      neovim = "0.10.1";
+    };
+  };
+
   programs.bash.enable = true;
   programs.bash.bashrcExtra = builtins.readFile ./bashrc;
 

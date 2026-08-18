@@ -213,6 +213,21 @@
         "type": "github"
       }
     },
+    "multiverse": {
+      "locked": {
+        "lastModified": 1787000429,
+        "narHash": "sha256-/N5kwOxwNgVcijP0da4rLwKPSPaOFrzLrrtLmygW1Ds=",
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "rev": "0e8bdb85b45ea4d72ac62d38c05a151069350f6b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "type": "github"
+      }
+    },
     "nix": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -368,6 +383,7 @@
         "android-nixpkgs": "android-nixpkgs",
         "determinate": "determinate",
         "home-manager": "home-manager",
+        "multiverse": "multiverse",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_3",
         "rust-overlay": "rust-overlay",

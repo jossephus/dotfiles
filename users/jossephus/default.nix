@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -45,6 +46,9 @@
       yt-dlp
       zenith
     ])
+    ++ [
+      inputs.multiverse.packages.${pkgs.stdenv.hostPlatform.system}.mvs
+    ]
     ++ lib.optionals pkgs.stdenv.isDarwin [pkgs.appify];
 
   home.sessionVariables.EDITOR = "vim";
