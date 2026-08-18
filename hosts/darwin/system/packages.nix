@@ -16,7 +16,7 @@
     losslesscut-bin
     mosh
     mpv
-    #orbstack
+    orbstack
     rust-analyzer
     scrcpy
     tailscale

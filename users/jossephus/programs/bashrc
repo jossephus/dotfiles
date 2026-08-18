@@ -8,6 +8,18 @@ alias get="xh"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+if [[ $OSTYPE == darwin* ]]; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color=auto'
+fi
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export BUN_INSTALL="$HOME/.bun"

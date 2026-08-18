@@ -24,9 +24,17 @@ in {
     shopt -s checkjobs
 
     alias cd='z'
+
+    # Cmd+R via Ghostty (sends ESC-r); Ctrl+R stays bash reverse-search
+    if command -v atuin-bind >/dev/null 2>&1; then
+      atuin-bind -m emacs     '\er' atuin-search-emacs
+      atuin-bind -m vi-insert '\er' atuin-search-viins
+    fi
   '';
 
   home.packages = [adbConnect];
+
+  home.file."Library/pnpm/pnpm".source = "${pkgs.pnpm}/bin/pnpm";
 
   home.sessionPath = ["$HOME/Library/pnpm"];
   home.sessionVariables = {
