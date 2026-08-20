@@ -15,9 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
-      issues: write
-      pull-requests: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -25,28 +22,16 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v22
 
-      - name: Update flake.lock
-        id: update
-        uses: DeterminateSystems/update-flake-lock@v24
-        with:
-          pr-title: "chore: update flake.lock"
-          pr-labels: |
-            dependencies
-            automated
-          pr-body: |
-            Automated flake input bump via [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock).
-
-            ```
-            {{ env.GIT_COMMIT_MESSAGE }}
-            ```
-
-            Merged automatically; the **Cache** workflow on `main` rebuilds and pushes to Attic.
-
-      - name: Merge pull request
-        if: steps.update.outputs.pull-request-number != ''
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update and push flake.lock
         run: |
-          gh pr merge "${{ steps.update.outputs.pull-request-number }}" \
-            --squash \
-            --delete-branch
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          nix flake update
+          if git diff --quiet flake.lock; then
+            echo "flake.lock already up to date"
+            exit 0
+          fi
+          git add flake.lock
+          git commit -m "chore: update flake.lock"
+          git push
