@@ -1,0 +1,52 @@
+name: Update flake.lock
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: update-flake-lock
+  cancel-in-progress: true
+
+jobs:
+  lockfile:
+    name: Update flake.lock
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+
+      - name: Update flake.lock
+        id: update
+        uses: DeterminateSystems/update-flake-lock@v24
+        with:
+          pr-title: "chore: update flake.lock"
+          pr-labels: |
+            dependencies
+            automated
+          pr-body: |
+            Automated flake input bump via [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock).
+
+            ```
+            {{ env.GIT_COMMIT_MESSAGE }}
+            ```
+
+            Merged automatically; the **Cache** workflow on `main` rebuilds and pushes to Attic.
+
+      - name: Merge pull request
+        if: steps.update.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge "${{ steps.update.outputs.pull-request-number }}" \
+            --squash \
+            --delete-branch
