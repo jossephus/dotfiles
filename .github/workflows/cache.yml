@@ -46,11 +46,11 @@ jobs:
             "$ATTIC_BIN" push machine:jossephus "$path"
           done
 
-      - name: Build NixOS system and push
-        run: |
-          set -euo pipefail
-          path="$(nix build --no-link --print-out-paths '.#nixosConfigurations.aldrich-main.config.system.build.toplevel')"
-          "$ATTIC_BIN" push machine:jossephus "$path"
+      # - name: Build NixOS system and push
+      #   run: |
+      #     set -euo pipefail
+      #     path="$(nix build --no-link --print-out-paths '.#nixosConfigurations.aldrich-main.config.system.build.toplevel')"
+      #     "$ATTIC_BIN" push machine:jossephus "$path"
 
   build-darwin:
     name: Build and push macOS cache
