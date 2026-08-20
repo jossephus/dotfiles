@@ -52,6 +52,7 @@
       (import ./overlays/android.nix {
         androidNixpkgs = inputs.android-nixpkgs;
       })
+      (import ./overlays/yt-dlp.nix)
       (final: _: {
         zigpkgs = inputs.zig-overlay.packages.${final.stdenv.hostPlatform.system};
       })
