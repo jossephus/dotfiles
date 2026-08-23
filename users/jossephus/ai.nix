@@ -10,5 +10,6 @@
     skills
     terminal-use
     fx
+    opencode2
   ];
 }
