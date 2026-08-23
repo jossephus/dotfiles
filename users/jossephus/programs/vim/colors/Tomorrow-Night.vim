@@ -31,7 +31,7 @@ syntax reset
 
 let g:colors_name = "Tomorrow-Night"
 
-if has("gui_running") || &t_Co == 88 || &t_Co == 256
+if has("gui_running") || &t_Co == 88 || &t_Co >= 256
 	" Returns an approximate grey index for the given grey level
 	fun <SID>grey_number(x)
 		if &t_Co == 88

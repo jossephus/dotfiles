@@ -75,9 +75,6 @@ Plugin 'autozimu/LanguageClient-neovim'
 "Plugin 'vim-surround'
 
 " My Local Plugins
-Plugin 'file:///home/aldrich/.vim/bundle/vim-clox'
-Plugin 'file:///home/aldrich/.vim/bundle/my-colorschemes'
-Plugin 'file:///home/aldirch/.vim/bundle/vim-geez'
 Plugin 'file:///home/aldrich/.vim/bundle/MakeSession'
 "Plugin 'file:///home/aldrich/.vim/bundle/dart-until-then'
 "{{{ 
