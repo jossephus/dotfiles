@@ -12,12 +12,20 @@
   extraModules ? [],
   specialArgs ? {},
 }: let
+  homeDirectory =
+    if profile == "darwin"
+    then "/Users/${user}"
+    else "/home/${user}";
   homeManagerModule = {
     home-manager = {
       extraSpecialArgs = specialArgs;
       useGlobalPkgs = true;
       useUserPackages = true;
-      users.${user} = import homeModule;
+      users.${user} = {
+        imports = [homeModule];
+        home.username = user;
+        home.homeDirectory = homeDirectory;
+      };
     };
   };
   darwinHomeManagerModule = {
@@ -64,6 +72,14 @@ in
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = specialArgs;
-      modules = extraModules ++ [homeModule];
+      modules =
+        extraModules
+        ++ [
+          homeModule
+          {
+            home.username = user;
+            home.homeDirectory = homeDirectory;
+          }
+        ];
     }
   else throw "Unsupported system profile: ${profile}"

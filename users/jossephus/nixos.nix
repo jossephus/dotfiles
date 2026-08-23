@@ -26,9 +26,6 @@
 
   fonts.fontconfig.enable = true;
 
-  home.username = "aldrich";
-  home.homeDirectory = "/home/aldrich";
-
   xresources.properties = {
     "Xft.dpi" = 172;
   };

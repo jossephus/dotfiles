@@ -60,6 +60,13 @@
   in {
     overlays.default = final: _: import ./pkgs {pkgs = final;};
 
+    # Shared home-manager modules (username/homeDirectory set by the host).
+    homeModules = {
+      jossephus = ./users/jossephus/default.nix;
+      jossephus-nixos = ./users/jossephus/nixos.nix;
+      jossephus-darwin = ./users/jossephus/darwin.nix;
+    };
+
     packages = forAllSystems (system: let
       pkgs = import nixpkgs {
         inherit system;
