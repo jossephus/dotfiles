@@ -11,5 +11,6 @@
     terminal-use
     fx
     opencode2
+    pi
   ];
 }
