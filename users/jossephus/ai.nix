@@ -12,5 +12,6 @@
     fx
     opencode2
     pi
+    antigravity-cli
   ];
 }
