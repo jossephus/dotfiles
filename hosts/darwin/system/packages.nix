@@ -14,6 +14,7 @@
     gradle
     jdk21
     losslesscut-bin
+    maestro
     mosh
     mpv
     orbstack
