@@ -46,9 +46,13 @@ in {
   home.stateVersion = "25.05";
 
   home.activation = {
+    # Copy out of /nix/store: the /nix volume mounts after login, so macOS
+    # resets a wallpaper pointing into the store back to the default.
     setWallpaper = lib.hm.dag.entryAfter ["revealHomeLibraryDirectory"] ''
       echo "[+] Setting wallpaper"
-      /usr/bin/osascript -e 'tell application "Finder" to set desktop picture to POSIX file "${wallpaper}"'
+      run mkdir -p "$HOME/Pictures/Wallpapers"
+      run install -m 644 "${wallpaper}" "$HOME/Pictures/Wallpapers/loupe-mono-dark.heic"
+      run /usr/bin/osascript -e 'tell application "System Events" to tell every desktop to set picture to POSIX file "'"$HOME"'/Pictures/Wallpapers/loupe-mono-dark.heic"'
     '';
   };
 }
