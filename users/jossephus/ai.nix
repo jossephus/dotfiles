@@ -10,9 +10,15 @@
     export DISABLE_AUTOUPDATER=1
     exec ${llmAgents.claude-code}/bin/claude "$@"
   '';
+
+  opencode = pkgs.writeShellScriptBin "opencode" ''
+    export OPENCODE_DISABLE_AUTOUPDATE=1
+    exec ${llmAgents.opencode2}/bin/opencode2 "$@"
+  '';
 in {
   home.packages = with llmAgents; [
     cl
+    opencode
     agent-browser
     herdr
     pi
