@@ -26,3 +26,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export POSTHOG="$HOME/.posthog"
 export PATH="$POSTHOG:$PATH"
+
+if [ -n "${REX_BIN_DIR:-}" ]; then
+    export PATH="$REX_BIN_DIR:$PATH"
+fi

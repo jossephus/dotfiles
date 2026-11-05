@@ -22,7 +22,6 @@
       ffmpeg
       findutils
       fzf
-      gh
       ghui
       glab
       go

@@ -36,11 +36,15 @@ in {
 
   home.file."Library/pnpm/pnpm".source = "${pkgs.pnpm}/bin/pnpm";
 
-  home.sessionPath = ["$HOME/Library/pnpm"];
+  home.sessionPath = [
+    "$HOME/Library/pnpm"
+    "$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS"
+  ];
   home.sessionVariables = {
     LC_ALL = "en_US.UTF-8";
     LANG = "en_US.UTF-8";
     PNPM_HOME = "$HOME/Library/pnpm";
+    REX_BIN_DIR = "$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS";
   };
 
   home.stateVersion = "25.05";

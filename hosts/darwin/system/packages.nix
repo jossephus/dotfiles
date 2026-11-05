@@ -30,4 +30,8 @@
     #targets = ["wasm32-wasip1" "wasm32-wasip2"];
     #})
   ];
+
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+  ];
 }

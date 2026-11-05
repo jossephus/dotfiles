@@ -10,6 +10,7 @@
     config.allowUnfree = true;
     pins = {
       neovim = "0.10.1";
+      gh = "2.103.0";
     };
   };
 
