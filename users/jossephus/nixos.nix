@@ -8,7 +8,6 @@
     btop
     fastfetch
     eza
-    tcl-8_5
     dpkg
 
     just
