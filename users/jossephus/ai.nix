@@ -16,17 +16,19 @@
     exec ${llmAgents.opencode2}/bin/opencode2 "$@"
   '';
 in {
-  home.packages = with llmAgents; [
-    cl
-    opencode
-    agent-browser
-    herdr
-    pi
-    skills
-    terminal-use
-    fx
-    opencode2
-    pi
-    antigravity-cli
-  ];
+  home.packages =
+    (with llmAgents; [
+      cl
+      opencode
+      agent-browser
+      herdr
+      pi
+      skills
+      terminal-use
+      fx
+      opencode2
+      pi
+    ])
+    # Local override: llm-agents is still on antigravity-cli 1.5.0.
+    ++ [pkgs.antigravity-cli];
 }
