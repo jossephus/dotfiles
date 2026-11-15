@@ -21,6 +21,7 @@ in {
       cl
       opencode
       agent-browser
+      antigravity-cli
       herdr
       pi
       skills
@@ -28,7 +29,5 @@ in {
       fx
       opencode2
       pi
-    ])
-    # Local override: llm-agents is still on antigravity-cli 1.5.0.
-    ++ [pkgs.antigravity-cli];
+    ]);
 }
