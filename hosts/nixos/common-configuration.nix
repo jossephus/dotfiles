@@ -70,8 +70,14 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
-    extra-substituters = [ "https://cache.jossephus.et/jossephus" ];
-    extra-trusted-public-keys = [ "jossephus:VNt933J5SAbf+pEOghPT361rDmeNJCa3+R3xhnWbX68=" ];
+    extra-substituters = [
+      "https://cache.jossephus.et/jossephus"
+      "https://cache.numtide.com"
+    ];
+    extra-trusted-public-keys = [
+      "jossephus:VNt933J5SAbf+pEOghPT361rDmeNJCa3+R3xhnWbX68="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+    ];
   };
 
   systemd.settings.Manager.DefaultLimitNOFILE = 1048576;
