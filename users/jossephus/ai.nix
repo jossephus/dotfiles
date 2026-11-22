@@ -28,6 +28,7 @@ in {
       terminal-use
       fx
       opencode2
+      opencode-browse
       pi
     ]);
 }
